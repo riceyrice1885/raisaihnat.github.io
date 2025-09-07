@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Raisa Ihnat — Portfolio</title>
+  <meta name="description" content="Portfolio of Raisa Ihnat — drawings, prints, books, and video." />
+  <style>
+    :root{
+      --bg:#ffffff;
+      --ink:#1a1a1a;
+      --muted:#6b6b6b;
+      --link:#0a66c2;
+      --pad: clamp(14px, 2.5vw, 24px);
+      --max: 980px;
+      --grid-gap: clamp(8px, 1.6vw, 16px);
+    }
+    html,body{height:100%}
+    body{
+      margin:0; font:16px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--ink); background:var(--bg);
+    }
+    a{color:var(--ink); text-decoration:none; border-bottom:1px solid transparent}
+    a:hover{border-bottom-color:currentColor}
+
+    header{position:sticky; top:0; background:#fff; border-bottom:1px solid #eee;}
+    .nav{max-width:var(--max); margin:0 auto; padding:calc(var(--pad)*.8) var(--pad); display:flex; align-items:center; gap:24px}
+    .brand{font-weight:600;}
+    .spacer{flex:1}
+
+    main{max-width:var(--max); margin:0 auto; padding:var(--pad)}
+    section{padding:calc(var(--pad)*1.25) 0;}
+    h1,h2{margin:0 0 .5rem}
+    h1{font-size:clamp(22px,3.2vw,30px)}
+    h2{font-size:clamp(18px,2.4vw,22px); color:var(--muted)}
+
+    .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(180px,1fr)); gap:var(--grid-gap)}
+    .card{background:white; border:1px solid #e8e6e2; border-radius:12px; overflow:hidden}
+    .thumb{aspect-ratio:4/3; width:100%; object-fit:cover; background:#eae7e2}
+    .meta{padding:.7rem .8rem; font-size:.9rem; color:var(--muted)}
+
+    footer{max-width:var(--max); margin:0 auto; padding:var(--pad); color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">Raisa Ihnat</div>
+      <div class="spacer"></div>
+      <a href="#work">Work</a>
+      <a href="#drawings">Drawings</a>
+      <a href="#prints">Prints</a>
+      <a href="#books">Books</a>
+      <a href="#video">Video</a>
+      <a href="#bio">Bio + CV</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="work">
+      <h1>Selected Work</h1>
+      <h2>Simple, image-forward portfolio</h2>
+      <div class="grid" id="gallery">
+        <!-- Example card (remove later):
+        <figure class="card">
+          <img class="thumb" src="images/sample.jpg" alt="Title" />
+          <figcaption class="meta">Work title (year)</figcaption>
+        </figure>
+        -->
+      </div>
+    </section>
+
+    <section id="drawings">
+      <h1>Drawings</h1>
+      <p class="meta">Coming soon — add drawing cards here.</p>
+      <div class="grid"></div>
+    </section>
+
+    <section id="prints">
+      <h1>Prints</h1>
+      <p class="meta">Coming soon — add print cards here.</p>
+      <div class="grid"></div>
+    </section>
+
+    <section id="books">
+      <h1>Books</h1>
+      <ul>
+        <!-- Add book entries as list items. -->
+      </ul>
+    </section>
+
+    <section id="video">
+      <h1>Video</h1>
+      <div style="aspect-ratio:16/9; background:#f2f2f2; border:1px dashed #ddd; border-radius:12px; display:grid; place-items:center;">
+        <p class="meta">Embed coming soon</p>
+      </div>
+    </section>
+
+    <section id="bio">
+      <h1>Bio + CV</h1>
+      <p class="meta">Short bio paragraph here.</p>
+      <ul>
+        <li>Education — …</li>
+        <li>Exhibitions — …</li>
+        <li>Publications — …</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h1>Contact</h1>
+      <p>Email: <a href="mailto:hello@raisaihnat.com">hello@raisaihnat.com</a></p>
+      <p>Instagram: <a href="https://instagram.com/raisaihnat" target="_blank">@raisaihnat</a></p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Raisa Ihnat.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
