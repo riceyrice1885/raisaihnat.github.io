@@ -10,16 +10,32 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">  <!-- your CSS after the font link -->
   <style>
-    :root{
-      --bg:#e6e6ff;
-      --ink:#ff0000;
-      --muted:#6b6b6b;
-      --link:#0a66c2;
-      --pad: clamp(14px, 2.5vw, 24px);
-      --max: 980px;
-      --grid-gap: clamp(8px, 1.6vw, 16px);
-      --font-head: "Space Grotesk", system-ui, sans-serif;
-      --font-body: "Inter", system-ui, sans-serif;
+  :root {
+  --bg: #e6e6ff;
+  --ink: #ff0000;
+  --muted: #6b6b6b;
+  --link: #0a66c2;
+  --pad: clamp(14px, 2.5vw, 24px);
+  --max: 980px;
+  --grid-gap: clamp(8px, 1.6vw, 16px);
+  --font-head: "Space Grotesk", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+/* site-wide headings use the headline font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+/* header + nav tabs use the headline font too */
+header, .nav, .nav a, .brand {
+  font-family: var(--font-head);
+  font-weight: 700;
+  letter-spacing: 0.06em; /* slightly wider for tabs */
+}
+
     }
     html,body{height:100%}
     body{
