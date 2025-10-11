@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photography — Raisa Ihnat</title>
+  <meta name="description" content="Photography portfolio of Raisa Ihnat." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+  <style>
+    :root{
+      --bg:#e6e6ff;
+      --ink:#000;
+      --pad:clamp(14px,2.5vw,24px);
+      --max:1200px;
+    }
+    body{
+      margin:0;
+      font-family:"Inter",system-ui;
+      background:var(--bg);
+      color:var(--ink);
+    }
+    header{
+      position:sticky;top:0;
+      background:#ccccff;
+      border-bottom:0.5px solid #eee;
+    }
+    .nav{
+      max-width:var(--max);
+      margin:0 auto;
+      padding:calc(var(--pad)*.8) var(--pad);
+      display:flex;align-items:center;gap:24px;
+    }
+    .brand{font-family:"Space Grotesk";font-weight:800;letter-spacing:.06em;}
+    .spacer{flex:1;}
+    .nav a{font-family:"Space Grotesk";font-weight:700;letter-spacing:.06em;color:var(--ink);text-decoration:none;}
+    .nav a:hover{text-decoration:underline;}
+
+    main{max-width:var(--max);margin:0 auto;padding:var(--pad);}
+    h1{text-align:center;font-family:"Space Grotesk";margin-bottom:1.5rem;}
+
+    /* Masonry layout */
+    .masonry{column-width:320px;column-gap:16px;}
+    .card{break-inside:avoid;margin-bottom:16px;}
+    .card img{width:100%;border-radius:12px;display:block;transition:transform .25s ease,filter .25s ease;}
+    .card img:hover{transform:scale(1.02);filter:brightness(1.05);}
+    footer{text-align:center;padding:2rem;color:#444;}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="brand">RAISA IHNAT</div>
+      <div class="spacer"></div>
+      <a href="index.html#bio">ABOUT</a>
+      <a href="index.html#media">MEDIA</a>
+      <a href="photography.html">PHOTOGRAPHY</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Photography</h1>
+    <p style="text-align:center;">Click any image to view fullscreen.</p>
+    <div id="gallery" class="masonry"></div>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Raisa Ihnat. All Rights Reserved.
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const IMAGES = [
+      { src: "images/photography/0etl7.jpeg" },
+      { src: "images/photography/0ni6l.jpeg" },
+      { src: "images/photography/48RLX.jpeg" },
+      { src: "images/photography/7dAUo.jpeg" },
+      { src: "images/photography/BUyrd.jpeg" },
+      { src: "images/photography/C4G7C.jpeg" },
+      { src: "images/photography/Isfc7.jpeg" },
+      { src: "images/photography/J4cnZ.jpeg" },
+      { src: "images/photography/JC0hr.jpeg" },
+      { src: "images/photography/KoLh2.jpeg" },
+      { src: "images/photography/LEvmD.jpeg" },
+      { src: "images/photography/M0HMq.jpeg" },
+      { src: "images/photography/NFIAV.jpeg" },
+      { src: "images/photography/NPtPM.jpeg" },
+      { src: "images/photography/QtxtC.jpeg" },
+      { src: "images/photography/RWjen.jpeg" },
+      { src: "images/photography/U52NC.jpeg" },
+      { src: "images/photography/UIY0T.jpeg" },
+      { src: "images/photography/VUpl4.jpeg" }
+    ];
+
+    const gallery = document.getElementById("gallery");
+    IMAGES.forEach(item => {
+      const card = document.createElement("figure");
+      card.className = "card";
+      card.innerHTML = `
+        <a href="${item.src}" class="glightbox" data-gallery="photos">
+          <img src="${item.src}" alt="">
+        </a>`;
+      gallery.appendChild(card);
+    });
+
+    GLightbox({ selector: ".glightbox" });
+  </script>
+</body>
+</html>
