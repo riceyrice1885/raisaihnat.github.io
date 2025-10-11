@@ -1,1 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About — Raisa Ihnat</title>
+  <meta name="description" content="About Raisa Ihnat." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #e6e6ff;
+      --ink: #000;
+      --pad: clamp(14px, 2.5vw, 24px);
+      --font-head: "Space Grotesk", system-ui, sans-serif;
+      --font-body: "Inter", system-ui, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--font-body);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: #ccccff;
+      border-bottom: 0.5px solid #eee;
+      position: sticky;
+      top: 0;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: var(--pad);
+      font-family: var(--font-head);
+      font-weight: 700;
+    }
+
+    .nav a {
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: .06em;
+    }
+
+    .nav a:hover {
+      text-decoration: underline;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--pad);
+    }
+
+    .bio {
+      max-width: 700px;
+      text-align: center;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    h1 {
+      font-family: var(--font-head);
+      font-size: clamp(24px, 3vw, 32px);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="nav">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="photography.html">PHOTOGRAPHY</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="bio">
+      <h1>About</h1>
+      <p>
+        [Write your bio here. Keep it to one or two paragraphs, centered on the page.
+        It will automatically use the same Google fonts and clean spacing as the rest of your site.]
+      </p>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Raisa Ihnat. All Rights Reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
