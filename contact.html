@@ -22,6 +22,22 @@
       --muted:#555;
       --accent:#ccccff; /* change if you want a colored button */
     }
+
+      .social-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 0.5rem;
+}
+.social-links a svg {
+  transition: transform 0.2s ease, fill 0.2s ease;
+}
+.social-links a:hover svg {
+  transform: scale(1.15);
+  fill: #ff0000; /* change to your accent color */
+
+
+    }
     *{ box-sizing:border-box; }
     body{
       margin:0; background:var(--bg); color:var(--ink);
@@ -85,6 +101,19 @@
       <a href="contact.html">CONTACT</a>
     </nav>
   </header>
+
+    <!-- SOCIAL LINKS -->
+  <section style="text-align:center; margin-top:3rem;">
+    <h2 style="font-family:'Space Grotesk'; font-size:1.2rem; margin-bottom:1rem;">Connect</h2>
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/raisa-ihnat-456543208/" target="_blank" aria-label="LinkedIn">
+        <!-- LinkedIn SVG -->
+      </a>
+      <a href="https://www.instagram.com/r.ihnat/?hl=en" target="_blank" aria-label="Instagram">
+        <!-- Instagram SVG -->
+      </a>
+    </div>
+  </section>
 
   <main>
     <h1>Contact</h1>
