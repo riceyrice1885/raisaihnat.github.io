@@ -10,8 +10,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a2e0e6d54b.js" crossorigin="anonymous"></script>
-
+  <!-- Font Awesome (CSS CDN so it works on GitHub Pages) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
 
   <style>
     :root{
@@ -56,8 +56,8 @@
       padding:clamp(18px,3vw,28px); box-shadow:0 10px 25px rgba(0,0,0,.06);
       display:flex; flex-direction:column; height:100%;
     }
-    .card h2{ 
-      margin:0 0 .6rem; font-family:"Space Grotesk"; font-size:1.25rem; 
+    .card h2{
+      margin:0 0 .6rem; font-family:"Space Grotesk"; font-size:1.25rem;
       text-align:center;
     }
     .small{ color:var(--muted); margin:0 0 1rem; font-size:.95rem; text-align:center; }
@@ -93,9 +93,10 @@
     .connect-wrap{ text-align:center; margin-top:3rem; }
     .connect-wrap h2{ font-family:"Space Grotesk"; font-size:1.2rem; margin:0 0 1rem; }
     .social-links{ display:flex; justify-content:center; gap:24px; }
-    .social-links a{ display:inline-block; line-height:0; }
-    .social-links svg{ width:28px; height:28px; fill:currentColor; color:#111; transition:transform .2s ease, color .2s ease; }
-    .social-links a:hover svg{ transform:scale(1.15); color:#000; }
+    .social-links a{ display:inline-block; line-height:0; color:#000; }
+    .social-links i{ font-size:28px; transition:transform .2s ease, color .2s ease; }
+    .social-links a:hover i{ transform:scale(1.15); }
+    .social-links a[aria-label*="LinkedIn"]:hover i{ color:#0A66C2; } /* LinkedIn blue */
   </style>
 </head>
 <body>
@@ -110,20 +111,15 @@
 
   <!-- SOCIAL LINKS -->
   <section class="connect-wrap">
-    <h2></h2>
+    <h2>Connect</h2>
     <div class="social-links">
       <!-- LinkedIn -->
-     <a href="https://www.linkedin.com/in/raisa-ihnat-456543208/" 
-   target="_blank" 
-   rel="noopener" 
-   aria-label="LinkedIn">
-  <i class="fa-brands fa-linkedin" style="font-size:28px;"></i>
+      <a href="https://www.linkedin.com/in/raisa-ihnat-456543208/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
       </a>
       <!-- Instagram -->
       <a href="https://www.instagram.com/r.ihnat/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm11 2.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 .001 6.001A3 3 0 0 0 12 9Z"/>
-        </svg>
+        <i class="fa-brands fa-instagram"></i>
       </a>
     </div>
   </section>
