@@ -91,12 +91,23 @@
 
     /* Actions pinned to the bottom & centered; ensures both cards' buttons line up */
     .actions{ display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:auto; }
-    .btn{
-      display:inline-block; padding:12px 18px; border-radius:10px; border:1px solid #000;
-      background:var(--accent); color:#fff; font-weight:700; letter-spacing:.04em; cursor:pointer;
-    }
-    .btn:disabled{ opacity:.6; cursor:not-allowed; }
-    .ghost{ background:#fff; color:#000; }
+    
+   .btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background: var(--accent);
+  color: var(--ink); /* matches rest of your text */
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.btn:hover {
+  color: #ffc266; /* warm gold highlight on hover */
+}
 
     /* Envelope button */
     .email-btn {
