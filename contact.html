@@ -25,8 +25,6 @@
       --accent:#ccccff; /* button fill */
     }
     
-
-    
     *{ box-sizing:border-box; }
     body{
       margin:0; background:var(--bg); color:var(--ink);
@@ -83,6 +81,27 @@
     .btn:disabled{ opacity:.6; cursor:not-allowed; }
     .ghost{ background:#fff; color:#000; }
 
+    /* Envelope button */
+    .email-btn {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      width:48px;
+      height:48px;
+      border-radius:10px;
+      font-size:20px;
+      padding:0;
+      border:1px solid #000;
+      background:#fff;
+      color:#000;
+      transition:transform .2s ease, background .2s ease, color .2s ease;
+    }
+    .email-btn:hover {
+      background:var(--accent);
+      color:#fff;
+      transform:scale(1.1);
+    }
+
     .success, .error{
       display:none; margin-top:8px; padding:10px 12px; border-radius:10px; font-weight:600; text-align:center;
     }
@@ -137,7 +156,6 @@
         <h2>General Inquiry</h2>
         <p class="small"></p>
 
-        <!-- Replace action with your Formspree endpoint: https://formspree.io/f/XXXX -->
         <form class="contact-form" action="https://formspree.io/f/xyznbzvo" method="POST">
           <div class="row">
             <div>
@@ -160,13 +178,14 @@
             <textarea id="g-message" name="message" required></textarea>
           </div>
 
-          <!-- Honeypot -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <input type="hidden" name="_next" value="contact.html#sent-general" />
 
           <div class="actions">
             <button class="btn" type="submit">SEND</button>
-            <a class="btn ghost" href="mailto:raisaihnat@gmail.com">Email directly</a>
+            <a class="email-btn" href="mailto:raisaihnat@gmail.com" aria-label="Email Raisa directly">
+              <i class="fa-regular fa-envelope"></i>
+            </a>
           </div>
 
           <div class="success">Thank you!</div>
@@ -179,7 +198,6 @@
         <h2>Piano Lessons Inquiry</h2>
         <p class="small"></p>
 
-        <!-- Replace action with your Formspree endpoint: https://formspree.io/f/XXXX -->
         <form class="contact-form" action="https://formspree.io/f/xqaygajg" method="POST">
           <div class="row">
             <div>
@@ -225,14 +243,15 @@
             <textarea id="p-message" name="message"></textarea>
           </div>
 
-          <!-- Honeypot -->
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
           <input type="hidden" name="subject" value="Piano Lesson Inquiry" />
           <input type="hidden" name="_next" value="contact.html#sent-lessons" />
 
           <div class="actions">
             <button class="btn" type="submit">SEND</button>
-            <a class="btn ghost" href="mailto:raisaihnat@gmail.com">Email directly</a>
+            <a class="email-btn" href="mailto:raisaihnat@gmail.com" aria-label="Email Raisa directly">
+              <i class="fa-regular fa-envelope"></i>
+            </a>
           </div>
 
           <div class="success">Thank you! I'll get back to you shortly!</div>
@@ -253,7 +272,7 @@
     const forms = document.querySelectorAll('.contact-form');
     forms.forEach(form => {
       form.addEventListener('submit', async (e) => {
-        if (form.action.includes('REPLACE_')) return; // If Formspree endpoint not set yet, let browser submit normally.
+        if (form.action.includes('REPLACE_')) return;
         e.preventDefault();
         const success = form.querySelector('.success');
         const error = form.querySelector('.error');
