@@ -24,7 +24,12 @@
       --muted:#555;
       --accent:#ccccff; /* button fill */
     }
+    
+  #g-message {
+  margin-top: 40px; /* pushes it down to visually align */
+}
 
+    
     *{ box-sizing:border-box; }
     body{
       margin:0; background:var(--bg); color:var(--ink);
@@ -162,11 +167,11 @@
           <input type="hidden" name="_next" value="contact.html#sent-general" />
 
           <div class="actions">
-            <button class="btn" type="submit">Send</button>
+            <button class="btn" type="submit">SEND</button>
             <a class="btn ghost" href="mailto:raisaihnat@gmail.com">Email directly</a>
           </div>
 
-          <div class="success">Thanks! Your message has been sent.</div>
+          <div class="success">Thank you!</div>
           <div class="error">Hmm, something went wrong. Please try again or use the email button.</div>
         </form>
       </section>
@@ -219,7 +224,7 @@
 
           <div>
             <label for="p-message">Additional Comments</label>
-            <textarea id="p-message" name="message" placeholder="Questions, prior training, instrument at home, etc."></textarea>
+            <textarea id="p-message" name="message"></textarea>
           </div>
 
           <!-- Honeypot -->
@@ -228,7 +233,7 @@
           <input type="hidden" name="_next" value="contact.html#sent-lessons" />
 
           <div class="actions">
-            <button class="btn" type="submit">Send Lesson Inquiry</button>
+            <button class="btn" type="submit">SEND</button>
             <a class="btn ghost" href="mailto:raisaihnat@gmail.com">Email directly</a>
           </div>
 
