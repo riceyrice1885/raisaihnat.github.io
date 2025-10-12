@@ -1,1 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Raisa Ihnat</title>
+  <meta name="description" content="Contact Raisa Ihnat for general inquiries or piano lessons." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#e6e6ff;
+      --ink:#000;
+      --pad:clamp(14px,2.5vw,24px);
+      --max:900px;
+      --radius:14px;
+      --border:#e5e5ef;
+      --muted:#555;
+      --accent:#000; /* change if you want a colored button */
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; background:var(--bg); color:var(--ink);
+      font-family:"Inter",system-ui; min-height:100vh; display:flex; flex-direction:column;
+    }
+    header{ position:sticky; top:0; background:#ccccff; border-bottom:0.5px solid #eee; }
+    .nav{
+      max-width:var(--max); margin:0 auto; padding:var(--pad);
+      display:flex; align-items:center; gap:24px; justify-content:center;
+      font-family:"Space Grotesk",system-ui; font-weight:700;
+    }
+    .nav a{ color:var(--ink); text-decoration:none; letter-spacing:.06em; }
+    .nav a:hover{ text-decoration:underline; }
+
+    main{ flex:1; max-width:var(--max); margin:0 auto; padding:var(--pad); }
+    h1{ font-family:"Space Grotesk"; font-size:clamp(24px,3vw,30px); margin:0 0 1rem; text-align:center; }
+    .lead{ text-align:center; color:var(--muted); margin:0 0 1.5rem; }
+
+    .grid{ display:grid; gap:clamp(16px,2vw,24px); grid-template-columns:1fr 1fr; }
+    @media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
+
+    .card{
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      padding:clamp(18px,3vw,28px); box-shadow:0 10px 25px rgba(0,0,0,.06);
+    }
+    .card h2{ margin:0 0 .6rem; font-family:"Space Grotesk"; font-size:1.25rem; }
+    .small{ color:var(--muted); margin:0 0 1rem; font-size:.95rem; }
+
+    form{ display:grid; gap:14px; }
+    label{ font-weight:600; font-size:.95rem; }
+    input, textarea, select{
+      width:100%; padding:12px; border:1px solid var(--border); border-radius:10px; font:inherit; background:#fafafe;
+    }
+    textarea{ min-height:140px; resize:vertical; }
+    .row{ display:grid; gap:14px; grid-template-columns:1fr 1fr; }
+    @media (max-width:560px){ .row{ grid-template-columns:1fr; } }
+
+    .actions{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    .btn{
+      display:inline-block; padding:12px 18px; border-radius:10px; border:1px solid #000;
+      background:var(--accent); color:#fff; font-weight:700; letter-spacing:.04em; cursor:pointer;
+    }
+    .btn:disabled{ opacity:.6; cursor:not-allowed; }
+    .ghost{ background:#fff; color:#000; }
+
+    .success, .error{
+      display:none; margin-top:8px; padding:10px 12px; border-radius:10px; font-weight:600;
+    }
+    .success{ background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; }
+    .error{ background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
+
+    footer{ text-align:center; padding:2rem; color:#555; }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT</a>
+      <a href="photography.html">PHOTOGRAPHY</a>
+      <a href="contact.html">CONTACT</a>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Contact</h1>
+    <p class="lead">Send a message below — for general inquiries or piano lessons.</p>
+
+    <div class="grid">
+      <!-- GENERAL INQUIRIES -->
+      <section class="card">
+        <h2>General Inquiry</h2>
+        <p class="small">For collaborations, performances, media, or other questions.</p>
+
+        <!-- Replace action with your Formspree endpoint: https://formspree.io/f/XXXX -->
+        <form class="contact-form" action="https://formspree.io/f/REPLACE_GENERAL_ID" method="POST">
+          <div class="row">
+            <div>
+              <label for="g-name">Name</label>
+              <input id="g-name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div>
+              <label for="g-email">Email</label>
+              <input id="g-email" name="_replyto" type="email" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div>
+            <label for="g-subject">Subject</label>
+            <input id="g-subject" name="subject" type="text" />
+          </div>
+
+          <div>
+            <label for="g-message">Message</label>
+            <textarea id="g-message" name="message" required></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="_next" value="contact.html#sent-general" />
+
+          <div class="actions">
+            <button class="btn" type="submit">Send</button>
+            <a class="btn ghost" href="mailto:YOUR_EMAIL@example.com?subject=General%20Inquiry%20from%20Website">Email directly</a>
+          </div>
+
+          <div class="success">Thanks! Your message has been sent.</div>
+          <div class="error">Hmm, something went wrong. Please try again or use the email button.</div>
+        </form>
+      </section>
+
+      <!-- PIANO LESSONS -->
+      <section class="card">
+        <h2>Piano Lessons Inquiry</h2>
+        <p class="small">Tell me a bit about your goals and schedule, and I’ll follow up with availability & rates.</p>
+
+        <!-- Replace action with your Formspree endpoint: https://formspree.io/f/XXXX -->
+        <form class="contact-form" action="https://formspree.io/f/REPLACE_LESSONS_ID" method="POST">
+          <div class="row">
+            <div>
+              <label for="p-name">Student Name</label>
+              <input id="p-name" name="student_name" type="text" required />
+            </div>
+            <div>
+              <label for="p-email">Email</label>
+              <input id="p-email" name="_replyto" type="email" required />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="p-experience">Experience</label>
+              <select id="p-experience" name="experience" required>
+                <option value="" disabled selected>Select level</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+                <option>Returning after a break</option>
+              </select>
+            </div>
+            <div>
+              <label for="p-age">Age (optional)</label>
+              <input id="p-age" name="age" type="text" placeholder="e.g., Adult or 9 years" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="p-goals">Goals</label>
+              <input id="p-goals" name="goals" type="text" placeholder="Technique, repertoire, auditions, etc." />
+            </div>
+            <div>
+              <label for="p-availability">Preferred Times</label>
+              <input id="p-availability" name="availability" type="text" placeholder="e.g., Weeknights after 6pm" />
+            </div>
+          </div>
+
+          <div>
+            <label for="p-message">Anything else?</label>
+            <textarea id="p-message" name="message" placeholder="Questions, prior training, instrument at home, etc."></textarea>
+          </div>
+
+          <!-- Honeypot -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="subject" value="Piano Lesson Inquiry" />
+          <input type="hidden" name="_next" value="contact.html#sent-lessons" />
+
+          <div class="actions">
+            <button class="btn" type="submit">Send Lesson Inquiry</button>
+            <a class="btn ghost" href="mailto:YOUR_EMAIL@example.com?subject=Piano%20Lesson%20Inquiry&body=Name:%0AExperience:%0AGoals:%0APreferred%20Times:%0A">Email directly</a>
+          </div>
+
+          <div class="success">Thanks! Your lesson inquiry has been sent.</div>
+          <div class="error">Hmm, something went wrong. Please try again or use the email button.</div>
+        </form>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> Raisa Ihnat. All Rights Reserved.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Enhance both forms with fetch + inline success/error
+    const forms = document.querySelectorAll('.contact-form');
+    forms.forEach(form => {
+      form.addEventListener('submit', async (e) => {
+        if (form.action.includes('REPLACE_')) return; // if user hasn't set Formspree yet, let it post normally
+        e.preventDefault();
+        const success = form.querySelector('.success');
+        const error = form.querySelector('.error');
+        const btn = form.querySelector('button[type="submit"]');
+        btn.disabled = true;
+        try {
+          const resp = await fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
+          if (resp.ok) {
+            success.style.display = 'block';
+            error.style.display = 'none';
+            form.reset();
+          } else {
+            success.style.display = 'none';
+            error.style.display = 'block';
+          }
+        } catch {
+          success.style.display = 'none';
+          error.style.display = 'block';
+        } finally {
+          btn.disabled = false;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
 
