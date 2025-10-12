@@ -20,29 +20,16 @@
       --radius:14px;
       --border:#e5e5ef;
       --muted:#555;
-      --accent:#ccccff; /* change if you want a colored button */
+      --accent:#9aa7ff; /* button fill */
     }
 
-      .social-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin-top: 0.5rem;
-}
-.social-links a svg {
-  transition: transform 0.2s ease, fill 0.2s ease;
-}
-.social-links a:hover svg {
-  transform: scale(1.15);
-  fill: #ff0000; /* change to your accent color */
-
-
-    }
     *{ box-sizing:border-box; }
     body{
       margin:0; background:var(--bg); color:var(--ink);
       font-family:"Inter",system-ui; min-height:100vh; display:flex; flex-direction:column;
     }
+
+    /* Top nav */
     header{ position:sticky; top:0; background:#ccccff; border-bottom:0.5px solid #eee; }
     .nav{
       max-width:var(--max); margin:0 auto; padding:var(--pad);
@@ -52,21 +39,29 @@
     .nav a{ color:var(--ink); text-decoration:none; letter-spacing:.06em; }
     .nav a:hover{ text-decoration:underline; }
 
+    /* Page shell */
     main{ flex:1; max-width:var(--max); margin:0 auto; padding:var(--pad); }
     h1{ font-family:"Space Grotesk"; font-size:clamp(24px,3vw,30px); margin:0 0 1rem; text-align:center; }
     .lead{ text-align:center; color:var(--muted); margin:0 0 1.5rem; }
 
-    .grid{ display:grid; gap:clamp(16px,2vw,24px); grid-template-columns:1fr 1fr; }
+    /* Grid for the two cards */
+    .grid{ display:grid; gap:clamp(16px,2vw,24px); grid-template-columns:1fr 1fr; align-items:stretch; }
     @media (max-width:860px){ .grid{ grid-template-columns:1fr; } }
 
+    /* Cards are flex columns so we can pin actions to the bottom */
     .card{
       background:#fff; border:1px solid var(--border); border-radius:var(--radius);
       padding:clamp(18px,3vw,28px); box-shadow:0 10px 25px rgba(0,0,0,.06);
+      display:flex; flex-direction:column; height:100%;
     }
-    .card h2{ margin:0 0 .6rem; font-family:"Space Grotesk"; font-size:1.25rem; }
-    .small{ color:var(--muted); margin:0 0 1rem; font-size:.95rem; }
+    .card h2{ 
+      margin:0 0 .6rem; font-family:"Space Grotesk"; font-size:1.25rem; 
+      text-align:center;
+    }
+    .small{ color:var(--muted); margin:0 0 1rem; font-size:.95rem; text-align:center; }
 
-    form{ display:grid; gap:14px; }
+    /* Forms: flex column so the .actions can push to bottom */
+    form.contact-form{ display:flex; flex-direction:column; gap:14px; height:100%; }
     label{ font-weight:600; font-size:.95rem; }
     input, textarea, select{
       width:100%; padding:12px; border:1px solid var(--border); border-radius:10px; font:inherit; background:#fafafe;
@@ -75,7 +70,8 @@
     .row{ display:grid; gap:14px; grid-template-columns:1fr 1fr; }
     @media (max-width:560px){ .row{ grid-template-columns:1fr; } }
 
-    .actions{ display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+    /* Actions pinned to the bottom & centered; ensures both cards' buttons line up */
+    .actions{ display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:auto; }
     .btn{
       display:inline-block; padding:12px 18px; border-radius:10px; border:1px solid #000;
       background:var(--accent); color:#fff; font-weight:700; letter-spacing:.04em; cursor:pointer;
@@ -84,12 +80,20 @@
     .ghost{ background:#fff; color:#000; }
 
     .success, .error{
-      display:none; margin-top:8px; padding:10px 12px; border-radius:10px; font-weight:600;
+      display:none; margin-top:8px; padding:10px 12px; border-radius:10px; font-weight:600; text-align:center;
     }
     .success{ background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; }
     .error{ background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
 
     footer{ text-align:center; padding:2rem; color:#555; }
+
+    /* Socials */
+    .connect-wrap{ text-align:center; margin-top:3rem; }
+    .connect-wrap h2{ font-family:"Space Grotesk"; font-size:1.2rem; margin:0 0 1rem; }
+    .social-links{ display:flex; justify-content:center; gap:24px; }
+    .social-links a{ display:inline-block; line-height:0; }
+    .social-links svg{ width:28px; height:28px; fill:currentColor; color:#111; transition:transform .2s ease, color .2s ease; }
+    .social-links a:hover svg{ transform:scale(1.15); color:#000; }
   </style>
 </head>
 <body>
@@ -102,15 +106,21 @@
     </nav>
   </header>
 
-    <!-- SOCIAL LINKS -->
-  <section style="text-align:center; margin-top:3rem;">
-    <h2 style="font-family:'Space Grotesk'; font-size:1.2rem; margin-bottom:1rem;">Connect</h2>
+  <!-- SOCIAL LINKS -->
+  <section class="connect-wrap">
+    <h2>Connect</h2>
     <div class="social-links">
-      <a href="https://www.linkedin.com/in/raisa-ihnat-456543208/" target="_blank" aria-label="LinkedIn">
-        <!-- LinkedIn SVG -->
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/raisa-ihnat-456543208/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5.001 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM14.5 9c-2.07 0-3.5 1.27-3.5 3.21V21h4v-6.33c0-1.22.86-2.02 2-2.02 1.12 0 1.99.77 1.99 2.02V21H23v-6.86C23 10.78 21.1 9 18.62 9c-1.58 0-2.83.71-3.38 1.72V9h-0.74Z"/>
+        </svg>
       </a>
-      <a href="https://www.instagram.com/r.ihnat/?hl=en" target="_blank" aria-label="Instagram">
-        <!-- Instagram SVG -->
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/r.ihnat/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm11 2.75a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 .001 6.001A3 3 0 0 0 12 9Z"/>
+        </svg>
       </a>
     </div>
   </section>
@@ -193,7 +203,7 @@
             </div>
             <div>
               <label for="p-age">Age (optional)</label>
-              <input id="p-age" name="age" type="text" 
+              <input id="p-age" name="age" type="text" />
             </div>
           </div>
 
@@ -237,11 +247,11 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Enhance both forms with fetch + inline success/error
+    // Enhance both forms with fetch + inline success/error.
     const forms = document.querySelectorAll('.contact-form');
     forms.forEach(form => {
       form.addEventListener('submit', async (e) => {
-        if (form.action.includes('REPLACE_')) return; // if user hasn't set Formspree yet, let it post normally
+        if (form.action.includes('REPLACE_')) return; // If Formspree endpoint not set yet, let browser submit normally.
         e.preventDefault();
         const success = form.querySelector('.success');
         const error = form.querySelector('.error');
@@ -268,4 +278,3 @@
   </script>
 </body>
 </html>
-
