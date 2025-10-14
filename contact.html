@@ -44,7 +44,7 @@
 
     /* Page shell */
     main{ flex:1; max-width:var(--max); margin:0 auto; padding:var(--pad); }
-    h1{ font-family:"Source Serif 4",serif; font-size:clamp(24px,3vw,30px); margin:0 0 1rem; text-align:center; }
+    h1{ font-family:"Source Serif 4",serif; font-weight:400;font-size:clamp(24px,3vw,30px); margin:0 0 1rem; text-align:center; }
     .lead{ text-align:center; color:var(--muted); margin:0 0 1.5rem; }
 
     /* Grid for the two cards */
@@ -58,14 +58,14 @@
       display:flex; flex-direction:column; height:100%;
     }
     .card h2{
-      margin:0 0 .6rem; font-family:"Source Serif 4", serif; font-size:1.25rem;
+      margin:0 0 .6rem; font-family:"Source Serif 4", serif; font-weight:400;font-size:1.25rem;
       text-align:center;
     }
     .small{ color:var(--muted); margin:0 0 1rem; font-size:.95rem; text-align:center; }
 
     /* Forms: flex column so the .actions can push to bottom */
     form.contact-form{ display:flex; flex-direction:column; gap:14px; height:100%; }
-    label{ font-weight:600; font-size:.95rem; }
+    label{ font-weight:400; font-size:.95rem; }
     input, textarea, select{
       width:100%; padding:12px; border:1px solid var(--border); border-radius:10px; font:inherit; background:#fafafe;
     }
@@ -133,7 +133,7 @@
     }
 
     .success, .error{
-      display:none; margin-top:8px; padding:10px 12px; border-radius:10px; font-weight:600; text-align:center;
+      display:none; margin-top:8px; padding:10px 12px; border-radius:10px; font-weight:400; text-align:center;
     }
     .success{ background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; }
     .error{ background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
@@ -142,7 +142,7 @@
 
     /* Socials */
     .connect-wrap{ text-align:center; margin-top:3rem; }
-    .connect-wrap h2{ font-family:"Space Grotesk"; font-size:1.2rem; margin:0 0 1rem; }
+    .connect-wrap h2{ font-family:"Source Serif 4"; font-size:1.2rem; margin:0 0 1rem; }
     .social-links{ display:flex; justify-content:center; gap:24px; }
     .social-links a{ display:inline-block; line-height:0; color:#000; }
     .social-links i{ font-size:28px; transition:transform .2s ease, color .2s ease; }
