@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recordings — Your Name</title>
+  <meta name="description" content="Selected recordings by Your Name." />
+
+  <!-- Minimal, modern, accessible styles -->
+  <style>
+    :root{
+      --bg:#000;
+      --ink:#ffffff;
+      --muted:#9aa0b4;
+      --accent:#6ea8fe;
+      --card:#151823;
+      --ring:#2d3652;
+      --pad:clamp(12px,2.6vw,28px);
+      --radius:20px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --max:1200px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font:400 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      background:radial-gradient(1200px 800px at 10% -10%, #182036, transparent 70%),
+                 radial-gradient(1000px 800px at 110% 20%, #121827, transparent 70%),
+                 var(--bg);
+      color:var(--ink);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:var(--accent); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max); margin:0 auto; padding:calc(var(--pad) * 1.5) var(--pad)}
+    header{display:flex; align-items:flex-end; justify-content:space-between; gap:24px; margin-bottom:24px}
+    h1{font-size:clamp(28px,4vw,44px); line-height:1.15; margin:0}
+    .sub{color:var(--muted); font-size:clamp(14px,1.5vw,16px)}
+
+    .grid{
+      display:grid; gap:18px;
+      grid-template-columns:repeat(12, 1fr);
+    }
+    @media (max-width: 840px){ .grid{grid-template-columns:repeat(6,1fr);} }
+    @media (max-width: 520px){ .grid{grid-template-columns:repeat(4,1fr);} }
+
+    .card{
+      grid-column: span 4; /* 3-up desktop */
+      background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.00));
+      border:1px solid var(--ring);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      display:flex; flex-direction:column;
+    }
+    @media (max-width: 840px){ .card{grid-column: span 6;} }
+    @media (max-width: 520px){ .card{grid-column: span 4;} }
+
+    .cover{
+      aspect-ratio: 16/9; width:100%; object-fit:cover; background:#0c0f18;
+      border-bottom:1px solid var(--ring);
+    }
+    .body{padding:16px}
+    .title{font-size:18px; font-weight:650; margin:0 0 4px}
+    .meta{color:var(--muted); font-size:14px; margin:0 0 10px}
+    .tags{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0}
+    .tag{font-size:12px; letter-spacing:.3px; padding:4px 8px; border-radius:999px; background:#20263a; color:#c8d0e5; border:1px solid #2e3756}
+    .audio{
+      display:flex; flex-direction:column; gap:10px;
+      background:var(--card); border:1px solid var(--ring); border-radius:12px; padding:12px;
+    }
+    audio{ width:100%; outline:none }
+    .links{display:flex; gap:12px; align-items:center; margin-top:10px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:10px; border:1px solid var(--ring); background:#1a2031; color:var(--ink); text-decoration:none}
+    .btn:hover{background:#212944}
+
+    footer{margin-top:36px; color:var(--muted); font-size:14px}
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Recordings</h1>
+        <p class="sub">Studio and live selections. Headphones recommended. All files loudness-normalized and tagged.</p>
+      </div>
+      <nav aria-label="breadcrumbs" class="sub"><a href="/">← Back to Home</a></nav>
+    </header>
+
+    <!-- Cards will render here -->
+    <section id="recordings" class="grid" aria-live="polite"></section>
+
+    <footer>
+      <p>Tip: Spacebar toggles play/pause on the focused player. Use Tab to move between tracks.</p>
+    </footer>
+  </div>
+
+  <script>
+  /*
+    HOW TO USE
+    1) Upload your audio files (MP3 or M4A preferred) to /assets/audio/ on your site.
+       - Recommended: 256–320 kbps MP3 or AAC (M4A). For small sizes + great quality use Opus .opus too.
+    2) Optional cover images to /assets/covers/ (JPG/PNG, ~1200×675).
+    3) Add entries below to the `TRACKS` array. Each entry renders a card with a native, accessible <audio> player and links.
+    4) Drop this file anywhere in your site (e.g. /recordings/index.html) and update the site nav.
+  */
+
+  const TRACKS = [
+    {
+      title: "Ballade",
+      composer: "Sergei Bortkiewicz",
+      year: 2024,
+      venue: "Live Performance, Arthur Zankel Music Center",
+      src: "/assets/audio/bortkiewicz_op17_no8.mp3",
+      download: "/assets/audio/bortkiewicz_op17_no8.mp3",
+      cover: "/assets/covers/bortkiewicz.jpg",
+      credits: "Piano — Raisa Ihnat; Mix — Sam Torres"
+    },
+    {
+      title: "Minuit",
+      composer: "Sergei Bortkiewicz",
+      year: 2024,
+      venue: "Lve Performance, Arthur Zankel Music Center",
+      src: "/assets/audio/levitsky_enchanted_nymph.m4a",
+      download: "/assets/audio/levitsky_enchanted_nymph.m4a",
+      cover: "/assets/covers/live.jpg",
+      credits: "Piano — Raisa Ihnat; Mix — Sam Torres"
+    },
+    // Add more tracks here
+  ];
+
+  const container = document.getElementById('recordings');
+
+  function trackCard(t){
+    const tagChips = (t.tags||[]).map(x=>`<span class="tag">${x}</span>`).join("");
+    const safeTitle = `${t.title} — ${t.composer}`;
+    const cover = t.cover ? `<img class="cover" src="${t.cover}" alt="Cover image for ${safeTitle}">` : `<div class="cover" aria-hidden="true"></div>`;
+    const dl = t.download ? `<a class="btn" href="${t.download}" download>Download</a>` : "";
+    const more = t.more ? `<a class="btn" href="${t.more}">Notes</a>` : "";
+
+    return `
+      <article class="card">
+        ${cover}
+        <div class="body">
+          <h2 class="title">${t.title}</h2>
+          <p class="meta">${t.composer}${t.year?` • ${t.year}`:""}${t.venue?` • ${t.venue}`:""}${t.duration?` • ${t.duration}`:""}</p>
+
+          <div class="audio">
+            <label class="sr-only" for="aud_${slugify(safeTitle)}">Audio player: ${safeTitle}</label>
+            <audio id="aud_${slugify(safeTitle)}" controls preload="none" src="${t.src}"></audio>
+            <div class="links">${dl}${more}</div>
+          </div>
+
+          ${t.credits?`<p class="meta" style="margin-top:12px">${t.credits}</p>`:""}
+          <div class="tags">${tagChips}</div>
+        </div>
+      </article>`
+  }
+
+  function slugify(s){
+    return s.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'');
+  }
+
+  container.innerHTML = TRACKS.map(trackCard).join('');
+
+  // Optional: Single-playback policy (only one track plays at a time)
+  const players = Array.from(document.querySelectorAll('audio'));
+  players.forEach(p => {
+    p.addEventListener('play', () => {
+      players.forEach(q => { if(q!==p) q.pause(); });
+    });
+  });
+
+  </script>
+</body>
+</html>
