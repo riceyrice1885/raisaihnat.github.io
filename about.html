@@ -9,7 +9,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -60,22 +60,67 @@
     main {
       flex: 1;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
       padding: var(--pad);
+      text-align: center;
     }
 
+    /* ---------- HERO IMAGE ---------- */
+    .hero {
+      margin: 0 auto calc(var(--pad) * 1.25);
+      max-width: 720px;
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid #111;
+    }
+
+    .hero img {
+      display: block;
+      width: 100%;
+      height: auto;
+      opacity: 0;
+      transform: translateY(8px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero figcaption {
+      font-size: 0.8rem;
+      color: #999999;
+      opacity: 0.6;
+      margin-top: 0.3rem;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* ---------- BIO SECTION ---------- */
     .bio {
       max-width: 700px;
       text-align: center;
       font-size: 1.1rem;
       line-height: 1.7;
+      animation: fadeIn 1s ease forwards 0.4s;
+      opacity: 0;
     }
 
     h1 {
       font-family: var(--font-head);
       font-size: clamp(24px, 3vw, 32px);
       margin-bottom: 1rem;
+      animation: fadeIn 1s ease forwards 0.2s;
+      opacity: 0;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     footer {
@@ -92,20 +137,26 @@
     <nav class="nav">
       <a href="index.html">HOME</a>
       <a href="about.html">ABOUT</a>
-            <a href="media.html">WORK</a>
+      <a href="media.html">WORK</a>
       <a href="contact.html">CONTACT</a>
     </nav>
   </header>
 
   <main>
-    <div class="bio">
-      <h1>About</h1>
-      <p>
-        Raisa Ihnat is a Ukrainian-American interdisciplinary musician and multimedia artist based in New York City and central New Jersey. Her work is grounded in inspiration from diverse sources——nature, color, synthesis, and the quiet playfulness of everyday life. She is a recent graduate of Trinity College Dublin (M.Phil) 
-        and Skidmore College (B.A) where she primarily studied music, continuing her advanced studies in classical piano as well as expanding her 
-        creative practice into multimedia technologies and audio engineering. Aside from the arts, you'll find her foraging, hiking, cooking, and playing with her cat Saja. 
-        
+    <h1>About</h1>
 
+    <figure class="hero">
+      <img src="recordings/IMG_5871.jpeg" alt="Raisa Ihnat portrait" />
+      <figcaption>Photo © 2024</figcaption>
+    </figure>
+
+    <div class="bio">
+      <p>
+        Raisa Ihnat is a Ukrainian-American interdisciplinary musician and multimedia artist based in New York City and central New Jersey. 
+        Her work is grounded in inspiration from diverse sources — nature, color, synthesis, and the quiet playfulness of everyday life. 
+        She is a recent graduate of Trinity College Dublin (M.Phil) and Skidmore College (B.A) where she primarily studied music, 
+        continuing her advanced studies in classical piano as well as expanding her creative practice into multimedia technologies and audio engineering. 
+        Aside from the arts, you'll find her foraging, hiking, cooking, and playing with her cat Saja. 
       </p>
     </div>
   </main>
@@ -119,4 +170,3 @@
   </script>
 </body>
 </html>
-
