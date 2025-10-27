@@ -22,12 +22,10 @@
       --link:#0a66c2;
       --pad: clamp(14px, 2.5vw, 24px);
       --max: 980px;
-      --grid-gap: clamp(8px, 1.6vw, 16px);
       --font-head: "Source Serif 4", serif;
       --font-body: "Source Serif 4", serif;
     }
 
-    /* ---------- sticky footer layout ---------- */
     html, body { height: 100%; }
     body{
       margin:0;
@@ -52,7 +50,6 @@
       opacity:.85;
     }
 
-    /* ---------- type + links ---------- */
     h1,h2,h3,h4,h5,h6{
       font-family:var(--font-head);
       font-weight:900;
@@ -69,7 +66,6 @@
     }
     a:hover{ border-bottom-color:currentColor; }
 
-    /* ---------- header/nav (EXACTLY SAME AS HOMEPAGE) ---------- */
     header{
       position:sticky; top:0; z-index:10;
       background:#000;
@@ -89,12 +85,11 @@
     .spacer{ flex:1; }
     .nav a{ font-family:var(--font-head); font-weight:900; letter-spacing:.06em; }
 
-    /* ---------- page-specific: recordings layout ---------- */
     .page-title{ text-align:center; margin: calc(var(--pad) * .5) 0 calc(var(--pad) * 1.25); }
 
     .hero{
       margin: 0 auto calc(var(--pad) * 1.25);
-      max-width: 720px;           /* smaller image container */
+      max-width: 720px;
       width: 100%;
       border-radius: 10px;
       overflow: hidden;
@@ -106,26 +101,20 @@
     .piece{ max-width: 820px; margin: 0 auto calc(var(--pad) * 1.6); }
     .piece h2{ font-size: clamp(18px, 2.4vw, 22px); margin-bottom: .5rem; text-align: left; }
 
-    /* Style applied to Drive preview iframes to mimic your audio player block */
-    .player{
+    iframe.player{
       width:100%;
-      height:84px;               /* compact Drive player */
-      display:block;
-      border:0;
-      background:#0b1d44;
+      height:120px;
+      border:none;
       border-radius:10px;
-      outline:none;
-      overflow:hidden;
+      background:#0b1d44;
     }
 
     .caption{ margin-top: .6rem; font-size: 0.975rem; line-height: 1.6; opacity: 0.95; }
     .meta{ opacity:.85; font-size:.95rem; }
-    .links{ margin-top:.5rem; display:flex; gap:12px; flex-wrap:wrap; }
-    .btn{ display:inline-block; padding:.4rem .7rem; border:1px solid #333; border-radius:8px; }
   </style>
 </head>
+
 <body>
-  <!-- HEADER (exactly the same as homepage) -->
   <header>
     <nav class="nav">
       <div class="brand">RAISA IHNAT</div>
@@ -140,75 +129,56 @@
     <h1 class="page-title">RECORDINGS</h1>
 
     <figure class="hero">
-      <img src="recordings/IMG_7229.jpeg" alt="Raisa Ihnat" />
+      <img src="recordings/IMG_7229.jpeg" alt="Raisa Ihnat performing" />
       <figcaption>Headphones recommended.</figcaption>
     </figure>
 
     <!-- Track 1 -->
     <section class="piece">
-      <h2>Ballade, Op.10. No.1 Sergei Bortkiewicz</h2>
-      <iframe
-        class="player"
-        src="https://drive.google.com/file/d/1FpghPuJYqIvPlIvSuQ5C4b0jP1gurvzC/preview"
-        allow="autoplay">
+      <h2>Minuit, Op.5 No.2 — Sergei Bortkiewicz</h2>
+      <iframe class="player"
+        scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-820545815/minuit-recital-performance-1%3Fin%3Duser-820545815/sets/live-recordings&show_teaser=false">
       </iframe>
       <p class="caption">
         <span class="meta">Live at the Arthur Zankel Music Center, Filene Ladd Concert Hall • 2024 •</span><br/>
         Piano — Raisa Ihnat, Engineer — Sam Torres
       </p>
-      <div class="links"></div>
     </section>
 
     <!-- Track 2 -->
     <section class="piece">
-      <h2>Minuit, Op.5 No.2, Allegro quasi presto, Sergei Bortkiewicz</h2>
-      <iframe
-        class="player"
-        src="https://drive.google.com/file/d/10PiDIfT_t2nRcpGEPA-R-zM5dk8paxez/preview"
-        allow="autoplay">
+      <h2>Sonata No.20 in A, D.959: 2. Andantino — Franz Schubert</h2>
+      <iframe class="player"
+        scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-820545815/schubert-andantino-performance-2%3Fin%3Duser-820545815/sets/live-recordings&show_teaser=false">
       </iframe>
       <p class="caption">
-        <span class="meta">Live at the Arthur Zankel Music Center, Filene Ladd Concert Hall • 2024 • </span><br/>
-         Piano — Raisa Ihnat, Engineer — Sam Torres
+        <span class="meta">Live at the Arthur Zankel Music Center, Filene Ladd Concert Hall • 2024 •</span><br/>
+        Piano — Raisa Ihnat, Engineer — Sam Torres
       </p>
-      <div class="links"></div>
     </section>
 
     <!-- Track 3 -->
     <section class="piece">
-      <h2>Sonata No.20 in A, D.959: 2. Andantino, Franz Schubert</h2>
-      <iframe
-        class="player"
-        src="https://drive.google.com/file/d/1obDg2hNXgiJFyR0g0ztiqpRtHam6x4Tw/preview"
-        allow="autoplay">
+      <h2>Ballade, Op.10 No.1 — Sergei Bortkiewicz</h2>
+      <iframe class="player"
+        scrolling="no" frameborder="no" allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/user-820545815/ballade-recital-performance-3%3Fin%3Duser-820545815/sets/live-recordings&show_teaser=false">
       </iframe>
       <p class="caption">
-        <span class="meta">Live at the Arthur Zankel Music Center, Filene Ladd Concert Hall • 2024 • </span><br/>
-         Piano — Raisa Ihnat, Engineer — Sam Torres
+        <span class="meta">Live at the Arthur Zankel Music Center, Filene Ladd Concert Hall • 2024 •</span><br/>
+        Piano — Raisa Ihnat, Engineer — Sam Torres
       </p>
-      <div class="links"></div>
     </section>
   </main>
 
-  <!-- FOOTER (exactly the same as homepage) -->
   <footer>
     &copy; <span id="year"></span> Raisa Ihnat. All Rights Reserved.
   </footer>
 
   <script>
-    // Year stamp
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Pause other players when one starts (iframes can't be paused cross-origin;
-    // leaving this here in case you switch back to native <audio> later)
-    /*
-    const players = Array.from(document.querySelectorAll('audio'));
-    players.forEach(p => {
-      p.addEventListener('play', () => {
-        players.forEach(q => { if(q!==p) q.pause(); });
-      });
-    });
-    */
   </script>
 </body>
 </html>
