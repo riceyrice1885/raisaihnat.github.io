@@ -96,7 +96,12 @@
       border: 1px solid #111;
     }
     .hero img{ display:block; width:100%; height:auto; }
-    .hero figcaption{ font-size:.95rem; opacity:.8; padding:.6rem .2rem 0; text-align:center; }
+    .hero figcaption{  font-size: 0.8rem;            /* much smaller text */
+  color: #999999;               /* light gray */
+  opacity: 0.6;                 /* slightly translucent for subtlety */
+  margin-top: 0.3rem;           /* just a hint of space from the image */
+  text-align: center;           /* keep centered */
+  font-style: italic;  }
 
     .piece{ max-width: 820px; margin: 0 auto calc(var(--pad) * 1.6); }
     .piece h2{ font-size: clamp(18px, 2.4vw, 22px); margin-bottom: .5rem; text-align: left; }
