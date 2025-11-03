@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
@@ -16,41 +16,80 @@
   <style>
     :root{
       --bg:#000;
-      --ink:#ffffff;
+      --ink:#fff;
       --pad:clamp(14px,2.5vw,24px);
       --max:1200px;
+      --gap:16px;
+      --radius:12px;
     }
+
+    /* Base */
+    *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:"Source Serif 4",serif;
+      font-family:"Source Serif 4", serif;
       background:var(--bg);
       color:var(--ink);
     }
+
     header{
-      position:sticky;top:0;
+      position:sticky; top:0;
       background:#000;
-      border-bottom:0.5px solid #eee;
+      border-bottom:0.5px solid rgba(255,255,255,.15);
+      z-index:10;
     }
     .nav{
       max-width:var(--max);
       margin:0 auto;
       padding:calc(var(--pad)*.8) var(--pad);
-      display:flex;align-items:center;gap:24px;
+      display:flex; align-items:center; gap:24px;
     }
-    .brand{font-family:"Source Serif 4";font-weight:900;letter-spacing:.06em;}
-    .spacer{flex:1;}
-    .nav a{font-family:"Source Serif 4";font-weight:900;letter-spacing:.06em;color:var(--ink);text-decoration:none;}
-    .nav a:hover{text-decoration:underline;}
+    .brand{font-weight:900; letter-spacing:.06em;}
+    .spacer{flex:1}
+    .nav a{font-weight:900; letter-spacing:.06em; color:var(--ink); text-decoration:none}
+    .nav a:hover{text-decoration:underline}
 
-    main{max-width:var(--max);margin:0 auto;padding:var(--pad);}
-    h1{text-align:center;font-family:"Source Serif 4";margin-bottom:1.5rem;}
+    main{max-width:var(--max); margin:0 auto; padding:var(--pad)}
+    h1{margin:0 0 1rem; text-align:center; font-weight:900}
 
-    /* Masonry layout */
-    .masonry{column-width:320px;column-gap:16px;}
-    .card{break-inside:avoid;margin-bottom:16px;}
-    .card img{width:100%;border-radius:12px;display:block;transition:transform .25s ease,filter .25s ease;}
-    .card img:hover{transform:scale(1.02);filter:brightness(1.05);}
-    footer{text-align:center;padding:2rem;color:#ffffff;}
+    /* Responsive gallery grid (fast + safe on iOS/Android) */
+    .gallery{
+      display:grid;
+      gap:var(--gap);
+      /* auto-fit responsive columns */
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    /* Card performance hints */
+    .card{
+      margin:0;
+      content-visibility:auto;            /* don’t render until near view */
+      contain-intrinsic-size: 300px;      /* reserve space to prevent jumps */
+    }
+    .card a{
+      display:block;
+      border-radius:var(--radius);
+      overflow:hidden;
+    }
+    .card img{
+      width:100%;
+      height:auto;
+      display:block;
+      border-radius:var(--radius);
+      transition:transform .25s ease, filter .25s ease;
+      will-change:transform;
+    }
+    .card img:hover{transform:scale(1.02); filter:brightness(1.05)}
+
+    /* Load more button */
+    .load-more-wrap{display:flex; justify-content:center; margin:2rem 0 1rem}
+    .btn{
+      background:#fff; color:#000; border:0; border-radius:999px;
+      padding:.8rem 1.2rem; font-weight:900; cursor:pointer;
+    }
+    .btn:disabled{opacity:.5; cursor:not-allowed}
+
+    footer{text-align:center; padding:2rem; color:#ffffff}
   </style>
 </head>
 <body>
@@ -65,8 +104,11 @@
   </header>
 
   <main>
-    <h1></h1>
-    <div id="gallery" class="masonry"></div>
+    <h1>Photography</h1>
+    <div id="gallery" class="gallery"></div>
+    <div class="load-more-wrap">
+      <button id="loadMore" class="btn">Load more</button>
+    </div>
   </main>
 
   <footer>
@@ -77,6 +119,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Your images
     const IMAGES = [
       { src: "images/photography/0etl7.jpeg" },
       { src: "images/photography/0ni6l.jpeg" },
@@ -107,18 +150,56 @@
       { src: "images/photography/c1i4r.jpeg" }
     ];
 
-    const gallery = document.getElementById("gallery");
-    IMAGES.forEach(item => {
-      const card = document.createElement("figure");
-      card.className = "card";
-      card.innerHTML = `
-        <a href="${item.src}" class="glightbox" data-gallery="photos">
-          <img src="${item.src}" alt="">
-        </a>`;
-      gallery.appendChild(card);
-    });
+    // Progressive render: initial batch, then "Load more"
+    const BATCH = 12;
+    let index = 0;
 
-    GLightbox({ selector: ".glightbox" });
+    const gallery = document.getElementById('gallery');
+    const loadBtn = document.getElementById('loadMore');
+
+    function createCard(src, eager=false){
+      const fig = document.createElement('figure');
+      fig.className = 'card';
+
+      const eagerAttr = eager ? 'eager' : 'lazy';
+      const fetchPriority = eager ? 'high' : 'auto';
+
+      fig.innerHTML = `
+        <a href="${src}" class="glightbox" data-gallery="photos">
+          <img
+            src="${src}"
+            alt=""
+            loading="${eagerAttr}"
+            decoding="async"
+            fetchpriority="${fetchPriority}"
+          />
+        </a>
+      `;
+      return fig;
+    }
+
+    function renderNextBatch(){
+      const end = Math.min(index + BATCH, IMAGES.length);
+      for(let i = index; i < end; i++){
+        // eager-load only the very first row for instant paint
+        const isEager = i < 4;
+        gallery.appendChild(createCard(IMAGES[i].src, isEager));
+      }
+      index = end;
+
+      // init or refresh lightbox (it auto-dedupes)
+      GLightbox({ selector: ".glightbox" });
+
+      if(index >= IMAGES.length){
+        loadBtn.disabled = true;
+        loadBtn.textContent = 'All photos loaded';
+      }
+    }
+
+    loadBtn.addEventListener('click', renderNextBatch);
+
+    // First paint
+    renderNextBatch();
   </script>
 </body>
 </html>
