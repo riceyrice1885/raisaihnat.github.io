@@ -10,88 +10,89 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;900&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
 
   <style>
-    :root{
-      --bg:#000;
-      --ink:#fff;
-      --pad:clamp(14px,2.5vw,24px);
-      --max:1200px;
-      --gap:16px;
-      --radius:12px;
+    :root {
+      --bg: #000;
+      --ink: #fff;
+      --pad: clamp(14px, 2.5vw, 24px);
+      --max: 900px;
+      --radius: 12px;
     }
 
-    /* Base */
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:"Source Serif 4", serif;
-      background:var(--bg);
-      color:var(--ink);
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Source Serif 4", serif;
     }
 
-    header{
-      position:sticky; top:0;
-      background:#000;
-      border-bottom:0.5px solid rgba(255,255,255,.15);
-      z-index:10;
-    }
-    .nav{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:calc(var(--pad)*.8) var(--pad);
-      display:flex; align-items:center; gap:24px;
-    }
-    .brand{font-weight:900; letter-spacing:.06em;}
-    .spacer{flex:1}
-    .nav a{font-weight:900; letter-spacing:.06em; color:var(--ink); text-decoration:none}
-    .nav a:hover{text-decoration:underline}
-
-    main{max-width:var(--max); margin:0 auto; padding:var(--pad)}
-    h1{margin:0 0 1rem; text-align:center; font-weight:900}
-
-    /* Responsive gallery grid (fast + safe on iOS/Android) */
-    .gallery{
-      display:grid;
-      gap:var(--gap);
-      /* auto-fit responsive columns */
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    header {
+      position: sticky; top: 0;
+      background: #000;
+      border-bottom: 0.5px solid rgba(255,255,255,.15);
+      z-index: 10;
     }
 
-    /* Card performance hints */
-    .card{
-      margin:0;
-      content-visibility:auto;            /* don’t render until near view */
-      contain-intrinsic-size: 300px;      /* reserve space to prevent jumps */
+    .nav {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: calc(var(--pad)*.8) var(--pad);
+      display: flex; align-items: center; gap: 24px;
     }
-    .card a{
-      display:block;
-      border-radius:var(--radius);
-      overflow:hidden;
-    }
-    .card img{
-      width:100%;
-      height:auto;
-      display:block;
-      border-radius:var(--radius);
-      transition:transform .25s ease, filter .25s ease;
-      will-change:transform;
-    }
-    .card img:hover{transform:scale(1.02); filter:brightness(1.05)}
 
-    /* Load more button */
-    .load-more-wrap{display:flex; justify-content:center; margin:2rem 0 1rem}
-    .btn{
-      background:#fff; color:#000; border:0; border-radius:999px;
-      padding:.8rem 1.2rem; font-weight:900; cursor:pointer;
-    }
-    .btn:disabled{opacity:.5; cursor:not-allowed}
+    .brand { font-weight: 900; letter-spacing: .06em; }
+    .spacer { flex: 1; }
+    .nav a { font-weight: 900; letter-spacing: .06em; color: var(--ink); text-decoration: none; }
+    .nav a:hover { text-decoration: underline; }
 
-    footer{text-align:center; padding:2rem; color:#ffffff}
+    main {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: var(--pad);
+    }
+
+    h1 {
+      text-align: center;
+      font-weight: 900;
+      margin-bottom: 2rem;
+    }
+
+    .photo {
+      margin-bottom: 2rem;
+      content-visibility: auto;
+      contain-intrinsic-size: 600px;
+    }
+
+    .photo a {
+      display: block;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .photo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: var(--radius);
+      transition: transform 0.25s ease, filter 0.25s ease;
+    }
+
+    .photo img:hover {
+      transform: scale(1.01);
+      filter: brightness(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #aaa;
+    }
   </style>
 </head>
+
 <body>
   <header>
     <nav class="nav">
@@ -105,10 +106,7 @@
 
   <main>
     <h1>Photography</h1>
-    <div id="gallery" class="gallery"></div>
-    <div class="load-more-wrap">
-      <button id="loadMore" class="btn">Load more</button>
-    </div>
+    <div id="gallery"></div>
   </main>
 
   <footer>
@@ -119,87 +117,49 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Your images
     const IMAGES = [
-      { src: "images/photography/0etl7.jpeg" },
-      { src: "images/photography/0ni6l.jpeg" },
-      { src: "images/photography/48RLX.jpeg" },
-      { src: "images/photography/7dAUo.jpeg" },
-      { src: "images/photography/BUyrd.jpeg" },
-      { src: "images/photography/C4G7C.jpeg" },
-      { src: "images/photography/Isfc7.jpeg" },
-      { src: "images/photography/J4cnZ.jpeg" },
-      { src: "images/photography/JC0hr.jpeg" },
-      { src: "images/photography/KoLh2.jpeg" },
-      { src: "images/photography/LEvmD.jpeg" },
-      { src: "images/photography/M0HMq.jpeg" },
-      { src: "images/photography/NFIAV.jpeg" },
-      { src: "images/photography/NPtPM.jpeg" },
-      { src: "images/photography/QtxtC.jpeg" },
-      { src: "images/photography/RWjen.jpeg" },
-      { src: "images/photography/U52NC.jpeg" },
-      { src: "images/photography/UIY0T.jpeg" },
-      { src: "images/photography/VUpl4.jpeg" },
-      { src: "images/photography/zfEBE.jpeg" },
-      { src: "images/photography/zMViP.jpeg" },
-      { src: "images/photography/svzxg.jpeg" },
-      { src: "images/photography/sP5WO.jpeg" },
-      { src: "images/photography/s1tky.jpeg" },
-      { src: "images/photography/ez7TH.jpeg" },
-      { src: "images/photography/criJ3.jpeg" },
-      { src: "images/photography/c1i4r.jpeg" }
+      "images/photography/0etl7.jpeg",
+      "images/photography/0ni6l.jpeg",
+      "images/photography/48RLX.jpeg",
+      "images/photography/7dAUo.jpeg",
+      "images/photography/BUyrd.jpeg",
+      "images/photography/C4G7C.jpeg",
+      "images/photography/Isfc7.jpeg",
+      "images/photography/J4cnZ.jpeg",
+      "images/photography/JC0hr.jpeg",
+      "images/photography/KoLh2.jpeg",
+      "images/photography/LEvmD.jpeg",
+      "images/photography/M0HMq.jpeg",
+      "images/photography/NFIAV.jpeg",
+      "images/photography/NPtPM.jpeg",
+      "images/photography/QtxtC.jpeg",
+      "images/photography/RWjen.jpeg",
+      "images/photography/U52NC.jpeg",
+      "images/photography/UIY0T.jpeg",
+      "images/photography/VUpl4.jpeg",
+      "images/photography/zfEBE.jpeg",
+      "images/photography/zMViP.jpeg",
+      "images/photography/svzxg.jpeg",
+      "images/photography/sP5WO.jpeg",
+      "images/photography/s1tky.jpeg",
+      "images/photography/ez7TH.jpeg",
+      "images/photography/criJ3.jpeg",
+      "images/photography/c1i4r.jpeg"
     ];
 
-    // Progressive render: initial batch, then "Load more"
-    const BATCH = 12;
-    let index = 0;
-
     const gallery = document.getElementById('gallery');
-    const loadBtn = document.getElementById('loadMore');
-
-    function createCard(src, eager=false){
+    IMAGES.forEach((src, i) => {
       const fig = document.createElement('figure');
-      fig.className = 'card';
-
-      const eagerAttr = eager ? 'eager' : 'lazy';
-      const fetchPriority = eager ? 'high' : 'auto';
-
+      fig.className = 'photo';
+      const eager = i < 2 ? 'eager' : 'lazy';
       fig.innerHTML = `
         <a href="${src}" class="glightbox" data-gallery="photos">
-          <img
-            src="${src}"
-            alt=""
-            loading="${eagerAttr}"
-            decoding="async"
-            fetchpriority="${fetchPriority}"
-          />
-        </a>
-      `;
-      return fig;
-    }
+          <img src="${src}" loading="${eager}" decoding="async" fetchpriority="${eager === 'eager' ? 'high' : 'auto'}" alt="">
+        </a>`;
+      gallery.appendChild(fig);
+    });
 
-    function renderNextBatch(){
-      const end = Math.min(index + BATCH, IMAGES.length);
-      for(let i = index; i < end; i++){
-        // eager-load only the very first row for instant paint
-        const isEager = i < 4;
-        gallery.appendChild(createCard(IMAGES[i].src, isEager));
-      }
-      index = end;
-
-      // init or refresh lightbox (it auto-dedupes)
-      GLightbox({ selector: ".glightbox" });
-
-      if(index >= IMAGES.length){
-        loadBtn.disabled = true;
-        loadBtn.textContent = 'All photos loaded';
-      }
-    }
-
-    loadBtn.addEventListener('click', renderNextBatch);
-
-    // First paint
-    renderNextBatch();
+    GLightbox({ selector: ".glightbox" });
   </script>
 </body>
 </html>
