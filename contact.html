@@ -157,6 +157,158 @@
     .social-links i{ font-size:28px; transition:transform .2s ease, color .2s ease; }
     .social-links a:hover i{ transform:scale(1.15); }
     .social-links a[aria-label*="LinkedIn"]:hover i{ color:#1a8cff; } /* LinkedIn blue */
+
+    /* ============================================================
+       LESSONS INFO — FAQ & STUDIO POLICIES
+       Scoped under .lessons-info to avoid colliding with .card etc.
+       ============================================================ */
+    .lessons-info-wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad) clamp(32px,5vw,64px);
+    }
+    .lessons-info{
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      padding: clamp(22px, 3.5vw, 40px) clamp(18px, 3vw, 36px);
+      box-shadow:0 10px 25px rgba(0,0,0,.06);
+      color:#000;
+      font-family:"Source Serif 4", serif;
+      font-weight:400;
+      line-height:1.6;
+      margin-top: clamp(24px, 4vw, 48px);
+    }
+    .lessons-info__intro{
+      text-align:center;
+      padding-bottom: 1.75rem;
+      margin-bottom: 1.75rem;
+      border-bottom:1px solid var(--border);
+    }
+    .lessons-info__eyebrow{
+      display:inline-block;
+      font-size:.75rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:.85rem;
+      font-weight:400;
+    }
+    .lessons-info__title{
+      font-family:"Source Serif 4", serif;
+      font-weight:900;
+      font-size: clamp(22px, 3vw, 28px);
+      margin:0 0 .8rem;
+      line-height:1.2;
+    }
+    .lessons-info__lede{
+      color:#000;
+      margin: 0 auto;
+      max-width: 56ch;
+      font-size:1rem;
+    }
+    .lessons-info__step{
+      margin-top:1.5rem;
+      padding: 14px 18px;
+      background:#fafafe;
+      border:1px solid var(--border);
+      border-radius:10px;
+      text-align:left;
+      font-size:.93rem;
+      color:#000;
+    }
+    .lessons-info__step strong{
+      display:block;
+      font-weight:900;
+      letter-spacing:.06em;
+      font-size:.8rem;
+      margin-bottom:.35rem;
+      color:#000;
+      text-transform:uppercase;
+    }
+    .lessons-info__section-heading{
+      font-family:"Source Serif 4", serif;
+      font-weight:900;
+      font-size: 1.15rem;
+      margin: 2.25rem 0 .25rem;
+      padding-bottom:.5rem;
+      border-bottom:1px solid var(--border);
+      text-align:center;
+      letter-spacing:.04em;
+    }
+    .lessons-info__section-heading:first-of-type{ margin-top: 0.5rem; }
+    .lessons-info details{
+      border-bottom:1px solid var(--border);
+    }
+    .lessons-info details:last-of-type{
+      border-bottom:none;
+    }
+    .lessons-info summary{
+      cursor:pointer;
+      list-style:none;
+      padding: 1rem 2.25rem 1rem .25rem;
+      position:relative;
+      font-family:"Source Serif 4", serif;
+      font-weight:400;
+      font-size: 1rem;
+      color:#000;
+      transition: color .2s ease;
+      user-select:none;
+    }
+    .lessons-info summary:hover{ color:#1a8cff; }
+    .lessons-info summary:focus-visible{
+      outline:2px solid #1a8cff;
+      outline-offset:2px;
+      border-radius:4px;
+    }
+    .lessons-info summary::-webkit-details-marker{ display:none; }
+    .lessons-info summary::marker{ content:""; }
+    .lessons-info summary::after{
+      content:"+";
+      position:absolute;
+      right:.4rem;
+      top:50%;
+      transform:translateY(-50%);
+      font-family:"Source Serif 4", serif;
+      font-weight:400;
+      font-size:1.4rem;
+      color:#000;
+      transition: color .2s ease;
+      line-height:1;
+    }
+    .lessons-info summary:hover::after{ color:#1a8cff; }
+    .lessons-info details[open] summary{ font-weight:900; }
+    .lessons-info details[open] summary::after{ content:"\2013"; }
+    .lessons-info details > div{
+      padding: .25rem .25rem 1.25rem;
+      color:#000;
+      font-size: .96rem;
+      animation: liFade .25s ease;
+    }
+    .lessons-info details p{ margin: 0 0 .8rem; }
+    .lessons-info details p:last-child{ margin-bottom:0; }
+    .lessons-info details ul{
+      margin: .35rem 0 .8rem;
+      padding-left: 1.2rem;
+    }
+    .lessons-info details li{ margin-bottom: .35rem; }
+    .lessons-info details strong{ font-weight:900; }
+    @keyframes liFade{
+      from { opacity:0; transform: translateY(-3px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    .lessons-info__footnote{
+      margin: 2rem 0 0;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      text-align:center;
+      color:var(--muted);
+      font-size:.88rem;
+      font-style:italic;
+    }
+    @media (max-width: 560px){
+      .lessons-info summary{ font-size:.97rem; padding-right: 2rem; }
+    }
   </style>
 </head>
 <body>
@@ -299,6 +451,298 @@
       </section>
     </div>
   </main>
+
+  <!-- ============================================================
+       PIANO LESSONS — FAQ & STUDIO POLICIES
+       ============================================================ -->
+  <div class="lessons-info-wrap">
+    <section class="lessons-info" aria-labelledby="lessons-info-title">
+
+      <div class="lessons-info__intro">
+        <span class="lessons-info__eyebrow">Studio Information</span>
+        <h2 id="lessons-info-title" class="lessons-info__title">
+          Frequently Asked Questions &amp; Studio Policies
+        </h2>
+        <p class="lessons-info__lede">
+          Everything prospective and current students should know about lessons,
+          scheduling, and studio expectations. Please review before submitting an
+          inquiry &mdash; and reach out with any questions not covered here.
+        </p>
+        <div class="lessons-info__step">
+          <strong>Steinway &amp; Sons &middot; STEP Certified</strong>
+          Selected for the Steinway Teacher Education Program (April&nbsp;2026), an
+          invitational certification reflecting a sustained commitment to excellence
+          in piano pedagogy.
+        </div>
+      </div>
+
+      <!-- ============ FAQ ============ -->
+      <h3 class="lessons-info__section-heading">Frequently Asked Questions</h3>
+
+      <details>
+        <summary>Who do you teach?</summary>
+        <div>
+          <p>
+            I welcome students of <strong>all ages and levels</strong>, from absolute
+            beginners through advanced and pre-college students, as well as adults
+            returning to the instrument after a break. My studio is built around
+            individualized instruction &mdash; lessons are tailored to each
+            student's goals, learning style, and musical interests.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What styles of music do you teach?</summary>
+        <div>
+          <p>
+            I specialize in <strong>classical and contemporary repertoire</strong>.
+            Students explore standard classical literature alongside film scores,
+            contemporary composers, popular music arrangements, and original work as
+            appropriate to their level. I do not teach jazz; students with jazz
+            interests are happily referred to colleagues who specialize in the idiom.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Where do lessons take place?</summary>
+        <div>
+          <p>
+            Lessons are held at my <strong>home studio in Princeton, NJ</strong> or
+            at <strong>Green Street Studios</strong>, depending on availability and
+            student preference. Both spaces are equipped with quality acoustic
+            instruments suitable for serious study.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How long are lessons, and how often do students meet?</summary>
+        <div>
+          <p>
+            I offer <strong>45-minute and 60-minute</strong> private lessons. Most
+            students meet weekly; the appropriate length depends on age, level, and
+            practice capacity. We'll determine the right fit during our initial
+            consultation.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>What does tuition cost, and how is billing handled?</summary>
+        <div>
+          <p>
+            Lessons are billed on a <strong>pay-per-lesson basis</strong> &mdash; no
+            long-term commitment or semester contract required. Specific rates are
+            shared during the inquiry process and depend on lesson length and
+            location.
+          </p>
+          <p>
+            Payment is due at the time of each lesson and may be made by Venmo,
+            Zelle, or check.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Do students need a piano at home?</summary>
+        <div>
+          <p>
+            Yes. Consistent home practice is essential to progress, so all students
+            must have regular access to an instrument. An <strong>acoustic
+            piano</strong> is strongly preferred. A high-quality digital keyboard
+            with <strong>88 fully-weighted keys, a sustain pedal, and a stable
+            stand</strong> is acceptable, particularly for beginning students. I'm
+            glad to advise on instrument selection.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How much should students practice?</summary>
+        <div>
+          <p>Practice expectations scale with age and level:</p>
+          <ul>
+            <li><strong>Young beginners:</strong> 10&ndash;20 minutes, 5 days per week</li>
+            <li><strong>Intermediate students:</strong> 30&ndash;45 minutes daily</li>
+            <li><strong>Advanced/pre-college:</strong> 60+ minutes daily</li>
+            <li><strong>Adult learners:</strong> a sustainable routine we'll develop together</li>
+          </ul>
+          <p>
+            Consistency matters more than duration. I work with each student to
+            build practice habits that fit their life and yield real progress.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Are there performance opportunities?</summary>
+        <div>
+          <p>
+            Yes. I host <strong>two studio recitals per year</strong> &mdash;
+            typically in winter and late spring &mdash; giving students of every
+            level a supportive, professional setting in which to perform. Recital
+            participation is encouraged but not required, and additional
+            opportunities (festivals, competitions, masterclasses) are available for
+            students who wish to pursue them.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>How do new students get started?</summary>
+        <div>
+          <p>
+            Submit the Piano Lessons Inquiry form above, and I'll respond within a
+            few business days to schedule a brief introductory conversation. From
+            there, we'll set up a first lesson and discuss goals, scheduling, and
+            any questions you have about the studio.
+          </p>
+        </div>
+      </details>
+
+      <!-- ============ POLICIES ============ -->
+      <h3 class="lessons-info__section-heading">Studio Policies</h3>
+
+      <details>
+        <summary>Attendance &amp; punctuality</summary>
+        <div>
+          <p>
+            Lessons begin and end at the scheduled time. Students arriving late
+            will receive the remainder of their scheduled lesson; the full lesson
+            fee applies. Please arrive a few minutes early to settle in and warm up.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Cancellations &amp; make-up lessons</summary>
+        <div>
+          <p>
+            Cancellations require <strong>a minimum of 48 hours' advance
+            notice</strong>. Lessons cancelled with at least 48 hours' notice are
+            eligible for a make-up lesson, scheduled at mutual convenience within
+            four weeks of the original date.
+          </p>
+          <p>
+            Lessons cancelled with less than 48 hours' notice, no-shows, and missed
+            make-up lessons are <strong>charged in full</strong> and are not
+            eligible for rescheduling. Exceptions may be made at my discretion in
+            cases of sudden illness or family emergency.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Teacher cancellations</summary>
+        <div>
+          <p>
+            In the rare event that I must cancel a lesson, students will be offered
+            a make-up lesson at mutual convenience or a full credit toward the next
+            scheduled lesson.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Holidays &amp; studio closures</summary>
+        <div>
+          <p>
+            The studio observes major federal holidays and a brief winter and
+            summer break. A schedule of closures is shared at the start of each
+            teaching season. No lesson fees are charged for studio-observed breaks.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Practice expectations &amp; progress</summary>
+        <div>
+          <p>
+            Consistent home practice is the foundation of meaningful progress.
+            Students &mdash; or, in the case of younger students, parents &mdash;
+            are expected to support a regular practice routine and to come prepared
+            to each lesson.
+          </p>
+          <p>
+            Progress is reviewed openly throughout the year. If a student is
+            consistently unprepared, we'll discuss adjustments together to find a
+            sustainable path forward.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Materials &amp; instrument upkeep</summary>
+        <div>
+          <p>
+            Students are responsible for purchasing their own sheet music, method
+            books, and lesson supplies (notebook, pencil, metronome). I provide
+            recommendations and, where possible, sourcing assistance.
+          </p>
+          <p>
+            Acoustic pianos should be tuned at least once per year; I'm glad to
+            recommend qualified technicians.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Recital participation</summary>
+        <div>
+          <p>
+            Studio recitals are held twice per year. Participation is strongly
+            encouraged as part of a well-rounded musical education, but never
+            required. A modest recital fee may apply to cover venue and program
+            costs and will be communicated in advance.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Communication</summary>
+        <div>
+          <p>
+            Email is the preferred channel for scheduling, billing, and
+            non-urgent questions, with a response time of one to two business days.
+            For same-day matters (e.g., a sudden cancellation), a brief text
+            message is appropriate.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Discontinuing lessons</summary>
+        <div>
+          <p>
+            Either the family or the teacher may end the lesson relationship at
+            any time. I ask for <strong>two weeks' notice</strong> when possible so
+            that current repertoire can be brought to a satisfying close and the
+            time slot reopened.
+          </p>
+        </div>
+      </details>
+
+      <details>
+        <summary>Privacy &amp; minors</summary>
+        <div>
+          <p>
+            Student information is kept confidential and used only for
+            instructional purposes. Parents and guardians of minor students are
+            welcome to observe lessons and are encouraged to remain on the premises
+            during instruction at the home studio.
+          </p>
+        </div>
+      </details>
+
+      <p class="lessons-info__footnote">
+        Studio policies are subject to periodic review and may be updated as the
+        studio grows. Current students will be notified of any meaningful changes.
+      </p>
+
+    </section>
+  </div>
 
   <footer>
     &copy; <span id="year"></span> Raisa Ihnat. All Rights Reserved.
