@@ -12,15 +12,15 @@
 </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Studio — Green Street Studio</title>
-  <meta name="description" content="Green Street Studio offers private piano instruction in downtown Princeton with Raisa Ihnat, Steinway & Sons STEP Certified Teacher." />
+  <title>Studio — Raisa Ihnat</title>
+  <meta name="description" content="Piano lessons inquiry and studio policies for Green Street Studio with Raisa Ihnat." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome (CSS CDN so it works on GitHub Pages) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer" />
 
   <style>
@@ -32,8 +32,7 @@
       --radius:14px;
       --border:#e5e5ef;
       --muted:#555;
-      --accent:#2d4a2b;
-      --accent-dark:#000;
+      --accent:#000; /* button fill */
     }
 
     *{ box-sizing:border-box; }
@@ -43,7 +42,7 @@
     }
 
     /* Top nav */
-    header{ position:sticky; top:0; background:#000; border-bottom:0.5px solid #eee; z-index: 10; }
+    header{ position:sticky; top:0; background:#000; border-bottom:0.5px solid #eee; }
     .nav{
       max-width:var(--max); margin:0 auto; padding:var(--pad);
       display:flex; align-items:center; gap:24px; justify-content:center;
@@ -52,146 +51,30 @@
     .nav a{ color:var(--ink); text-decoration:none; letter-spacing:.06em; }
     .nav a:hover{ text-decoration:underline; }
 
+    /* Page shell */
     main{ flex:1; max-width:var(--max); margin:0 auto; padding:var(--pad); }
+    h1{ font-family:"Lora", Georgia, serif; font-weight:400;font-size:clamp(24px,3vw,30px); margin:0 0 1rem; text-align:center; }
+    .lead{ text-align:center; color: #000; margin:0 0 1.5rem; }
 
-    /* ============================================================
-       STUDIO HERO
-       ============================================================ */
-    .studio-hero{
-      text-align:center;
-      padding: clamp(20px, 4vw, 40px) 0 clamp(24px, 4vw, 40px);
-      border-bottom: 1px solid var(--border);
-      margin-bottom: clamp(24px, 4vw, 40px);
-    }
-    .studio-eyebrow{
-      display:inline-block;
-      font-size:.75rem;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--muted);
-      margin-bottom:.85rem;
-      font-weight:400;
-    }
-    .studio-title{
-      font-family:"Lora", Georgia, serif;
-      font-weight:900;
-      font-size: clamp(28px, 4.5vw, 42px);
-      margin:0 0 .8rem;
-      line-height:1.1;
-      color: var(--accent);
-      letter-spacing: .03em;
-    }
-    .studio-subtitle{
-      font-style: italic;
-      color: #000;
-      font-size: clamp(15px, 2vw, 18px);
-      margin: 0 0 1.25rem;
-    }
-    .studio-lede{
-      color:#000;
-      margin: 0 auto;
-      max-width: 56ch;
-      font-size:1rem;
-      line-height:1.7;
-    }
-
-    /* Credential pill */
-    .credential-pill{
-      display: inline-block;
-      margin-top: 1.5rem;
-      padding: 10px 18px;
-      background: #fafafe;
-      border: 1px solid var(--border);
-      border-radius: 999px;
-      font-size: .85rem;
-      letter-spacing: .04em;
-      color: var(--accent-dark);
-      font-style: italic;
-    }
-    .credential-pill strong{
-      font-weight: 700;
-      font-style: normal;
-      letter-spacing: .06em;
-      color: var(--accent);
-    }
-
-    /* ============================================================
-       CALENDAR LINK SECTION
-       ============================================================ */
-    .info-block{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding: clamp(20px, 3vw, 32px);
-      margin-bottom: clamp(20px, 3vw, 28px);
-      box-shadow:0 4px 12px rgba(0,0,0,.04);
-    }
-    .info-block__heading{
-      font-family:"Lora", Georgia, serif;
-      font-weight:900;
-      font-size: 1.2rem;
-      color: var(--accent);
-      margin: 0 0 1rem;
-      letter-spacing: .03em;
-    }
-    .info-block p{
-      margin: 0 0 1rem;
-      line-height: 1.65;
-      font-size: .98rem;
-    }
-    .info-block p:last-child{ margin-bottom: 0; }
-
-    .calendar-link-row{
+    /* Single card centered */
+    .single-card-wrap{
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding: 14px 18px;
-      background: #fafafe;
-      border: 1px solid var(--border);
-      border-radius: 10px;
+      justify-content: center;
     }
-    .calendar-link-row__text{
-      font-size: .95rem;
-      color: #000;
+    .card{
+      background:#fff; border:1px solid var(--border); border-radius:var(--radius);
+      padding:clamp(18px,3vw,28px); box-shadow:0 10px 25px rgba(0,0,0,.06);
+      display:flex; flex-direction:column;
+      max-width: 600px;
+      width: 100%;
     }
-    .calendar-link-row__text strong{
-      font-weight: 700;
-      color: var(--accent);
+    .card h2{
+      margin:0 0 .6rem; font-family:"Lora", Georgia, serif; font-weight:400;font-size:1.25rem;
+      text-align:center;
     }
-    .calendar-link{
-      display: inline-block;
-      padding: 10px 18px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: .9rem;
-      letter-spacing: .04em;
-      font-weight: 700;
-      transition: opacity .2s ease;
-    }
-    .calendar-link:hover{ opacity: .85; }
+    .small{ color:var(--muted); margin:0 0 1rem; font-size:.95rem; text-align:center; }
 
-    /* ============================================================
-       INQUIRY FORM
-       ============================================================ */
-    .form-section{
-      background:#fff;
-      border:1px solid var(--border);
-      border-radius: var(--radius);
-      padding: clamp(20px, 3vw, 32px);
-      margin-bottom: clamp(24px, 4vw, 40px);
-      box-shadow:0 4px 12px rgba(0,0,0,.04);
-    }
-    .form-section h2{
-      margin:0 0 .4rem; font-family:"Lora", Georgia, serif; font-weight:900;font-size:1.2rem;
-      color: var(--accent);
-      letter-spacing: .03em;
-    }
-    .form-section .small{ color:var(--muted); margin:0 0 1.25rem; font-size:.95rem; }
-
+    /* Forms */
     form.contact-form{ display:flex; flex-direction:column; gap:14px; }
     label{ font-weight:400; font-size:.95rem; }
     input, textarea, select{
@@ -207,26 +90,31 @@
       gap: 14px;
       grid-template-columns: 1fr 1fr;
     }
+
     @media (max-width: 560px) {
       .row { grid-template-columns: 1fr; }
     }
 
-    .actions{ display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; margin-top: .25rem; }
+    .actions{ display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; margin-top:auto; }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 18px;
-      border-radius: 10px;
-      border: 1px solid #000;
-      background: #000;
-      color: #ffffff;
-      font-weight: 700;
-      letter-spacing: .04em;
-      cursor: pointer;
-      transition: color 0.25s ease, background 0.25s ease;
-    }
-    .btn:hover { color: #1a8cff; }
+   .btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 10px;
+  border: 1px solid #000;
+  background: var(--accent);
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: color 0.25s ease, background 0.25s ease;
+}
 
+.btn:hover {
+  color: #1a8cff;
+}
+
+    /* Envelope button */
     .email-btn {
       display:flex;
       align-items:center;
@@ -242,7 +130,7 @@
       transition:transform .2s ease, background .2s ease, color .2s ease;
     }
     .email-btn:hover {
-      background:#000;
+      background:var(--accent);
       color:#fff;
       transform:scale(1.1);
     }
@@ -253,51 +141,93 @@
     .success{ background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; }
     .error{ background:#fef2f2; color:#991b1b; border:1px solid #fecaca; }
 
+    footer{ text-align:center; padding:2rem; color: var(--ink); }
+
+    /* Socials */
+    .connect-wrap{ text-align:center; margin-top:3rem; }
+    .connect-wrap h2{ font-family:"Lora", Georgia, serif; font-size:1.2rem; margin:0 0 1rem; }
+    .social-links{ display:flex; justify-content:center; gap:24px; }
+    .social-links a{ display:inline-block; line-height:0; color:#fff; }
+    .social-links i{ font-size:28px; transition:transform .2s ease, color .2s ease; }
+    .social-links a:hover i{ transform:scale(1.15); }
+    .social-links a[aria-label*="LinkedIn"]:hover i{ color:#1a8cff; } /* LinkedIn blue */
+
     /* ============================================================
-       FAQ & STUDIO POLICIES
+       LESSONS INFO — FAQ & STUDIO POLICIES
        ============================================================ */
+    .lessons-info-wrap{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 var(--pad) clamp(32px,5vw,64px);
+    }
     .lessons-info{
       background:#fff;
       border:1px solid var(--border);
       border-radius: var(--radius);
       padding: clamp(22px, 3.5vw, 40px) clamp(18px, 3vw, 36px);
-      box-shadow:0 4px 12px rgba(0,0,0,.04);
+      box-shadow:0 10px 25px rgba(0,0,0,.06);
       color:#000;
       font-family:"Lora", Georgia, serif;
       font-weight:400;
       line-height:1.6;
-      margin-bottom: clamp(24px, 4vw, 48px);
+      margin-top: clamp(24px, 4vw, 48px);
     }
     .lessons-info__intro{
       text-align:center;
-      padding-bottom: 1.5rem;
-      margin-bottom: 1.5rem;
+      padding-bottom: 1.75rem;
+      margin-bottom: 1.75rem;
       border-bottom:1px solid var(--border);
+    }
+    .lessons-info__eyebrow{
+      display:inline-block;
+      font-size:.75rem;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      margin-bottom:.85rem;
+      font-weight:400;
     }
     .lessons-info__title{
       font-family:"Lora", Georgia, serif;
       font-weight:900;
-      font-size: clamp(20px, 2.8vw, 24px);
-      margin:0 0 .6rem;
+      font-size: clamp(22px, 3vw, 28px);
+      margin:0 0 .8rem;
       line-height:1.2;
-      color: var(--accent);
     }
     .lessons-info__lede{
       color:#000;
       margin: 0 auto;
       max-width: 56ch;
-      font-size:.95rem;
+      font-size:1rem;
+    }
+    .lessons-info__step{
+      margin-top:1.5rem;
+      padding: 14px 18px;
+      background:#fafafe;
+      border:1px solid var(--border);
+      border-radius:10px;
+      text-align:left;
+      font-size:.93rem;
+      color:#000;
+    }
+    .lessons-info__step strong{
+      display:block;
+      font-weight:900;
+      letter-spacing:.06em;
+      font-size:.8rem;
+      margin-bottom:.35rem;
+      color:#000;
+      text-transform:uppercase;
     }
     .lessons-info__section-heading{
       font-family:"Lora", Georgia, serif;
       font-weight:900;
-      font-size: 1.1rem;
-      margin: 1.75rem 0 .25rem;
+      font-size: 1.15rem;
+      margin: 2.25rem 0 .25rem;
       padding-bottom:.5rem;
       border-bottom:1px solid var(--border);
       text-align:center;
       letter-spacing:.04em;
-      color: var(--accent);
     }
     .lessons-info__section-heading:first-of-type{ margin-top: 0.5rem; }
     .lessons-info details{
@@ -318,9 +248,9 @@
       transition: color .2s ease;
       user-select:none;
     }
-    .lessons-info summary:hover{ color:var(--accent); }
+    .lessons-info summary:hover{ color:#1a8cff; }
     .lessons-info summary:focus-visible{
-      outline:2px solid var(--accent);
+      outline:2px solid #1a8cff;
       outline-offset:2px;
       border-radius:4px;
     }
@@ -339,7 +269,7 @@
       transition: color .2s ease;
       line-height:1;
     }
-    .lessons-info summary:hover::after{ color:var(--accent); }
+    .lessons-info summary:hover::after{ color:#1a8cff; }
     .lessons-info details[open] summary::after{ content:"\2013"; }
     .lessons-info details > div{
       padding: .25rem .25rem 1.25rem;
@@ -354,6 +284,7 @@
       padding-left: 1.2rem;
     }
     .lessons-info details li{ margin-bottom: .35rem; font-weight:400; }
+    .lessons-info details strong{ font-weight:400; }
     @keyframes liFade{
       from { opacity:0; transform: translateY(-3px); }
       to   { opacity:1; transform: translateY(0); }
@@ -370,8 +301,6 @@
     @media (max-width: 560px){
       .lessons-info summary{ font-size:.97rem; padding-right: 2rem; }
     }
-
-    footer{ text-align:center; padding:2rem; color: var(--ink); }
   </style>
 </head>
 <body>
@@ -385,102 +314,117 @@
     </nav>
   </header>
 
+  <!-- SOCIAL LINKS -->
+  <section class="connect-wrap">
+    <h2></h2>
+    <div class="social-links">
+      <!-- LinkedIn -->
+      <a href="https://www.linkedin.com/in/raisa-i-456543208/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/r.ihnat/?hl=en" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- HEADING -->
   <main>
-    <!-- HERO -->
-    <section class="studio-hero">
-      <span class="studio-eyebrow">Piano Instruction</span>
-      <h1 class="studio-title">Green Street Studio</h1>
-      <p class="studio-subtitle">with Raisa Ihnat</p>
-      <p class="studio-lede">
-        Private piano instruction in the heart of downtown Princeton.
-        Classical and contemporary repertoire, individualized to each student's
-        goals, level, and learning style. All ages and levels welcome.
-      </p>
-      <div class="credential-pill">
-        <strong>Steinway &amp; Sons</strong> &middot; STEP Certified Teacher
-      </div>
-    </section>
+    <h1></h1>
+    <p class="lead"></p>
 
-    <!-- PIANO LESSONS INQUIRY FORM -->
-    <section class="form-section">
-      <h2>Piano Lessons Inquiry</h2>
-      <p class="small">
-        Interested in lessons? Fill out the form below and I'll respond within a
-        few business days to schedule a brief introductory conversation.
-      </p>
+    <div class="single-card-wrap">
+      <!-- PIANO LESSONS -->
+      <section class="card">
+        <h2>Piano Lessons Inquiry</h2>
+        <p class="small"></p>
 
-      <form class="contact-form" action="https://formspree.io/f/xqaygajg" method="POST">
-        <div class="row">
-          <div>
-            <label for="p-name">Name</label>
-            <input id="p-name" name="student_name" type="text" required />
+        <form class="contact-form" action="https://formspree.io/f/xqaygajg" method="POST">
+          <div class="row">
+            <div>
+              <label for="p-name">Name</label>
+              <input id="p-name" name="student_name" type="text" required />
+            </div>
+            <div>
+              <label for="p-email">Email</label>
+              <input id="p-email" name="_replyto" type="email" required />
+            </div>
           </div>
-          <div>
-            <label for="p-email">Email</label>
-            <input id="p-email" name="_replyto" type="email" required />
+
+          <div class="row">
+            <div>
+              <label for="p-experience">Experience</label>
+              <select id="p-experience" name="experience" required>
+                <option value="" disabled selected>Select level</option>
+                <option>Beginner</option>
+                <option>Intermediate</option>
+                <option>Advanced</option>
+                <option>Returning after a break</option>
+              </select>
+            </div>
+            <div>
+              <label for="p-age">Age (optional)</label>
+              <input id="p-age" name="age" type="text" />
+            </div>
           </div>
-        </div>
 
-        <div class="row">
-          <div>
-            <label for="p-experience">Experience</label>
-            <select id="p-experience" name="experience" required>
-              <option value="" disabled selected>Select level</option>
-              <option>Beginner</option>
-              <option>Intermediate</option>
-              <option>Advanced</option>
-              <option>Returning after a break</option>
-            </select>
+          <div class="row">
+            <div>
+              <label for="p-goals">Goals</label>
+              <input id="p-goals" name="goals" type="text" placeholder="Technique, repertoire, auditions, etc." />
+            </div>
+            <div>
+              <label for="p-availability">Preferred Times</label>
+              <input id="p-availability" name="availability" type="text" placeholder="e.g., Weeknights after 6pm" />
+            </div>
           </div>
+
           <div>
-            <label for="p-age">Age (optional)</label>
-            <input id="p-age" name="age" type="text" />
+            <label for="p-message">Additional Comments</label>
+            <textarea id="p-message" name="message"></textarea>
           </div>
-        </div>
 
-        <div class="row">
-          <div>
-            <label for="p-goals">Goals</label>
-            <input id="p-goals" name="goals" type="text" placeholder="Technique, repertoire, auditions, etc." />
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="subject" value="Piano Lesson Inquiry" />
+          <input type="hidden" name="_next" value="studio.html#sent-lessons" />
+
+          <div class="actions">
+            <button class="btn" type="submit">Send</button>
+            <a class="email-btn" href="mailto:raisaihnat@gmail.com" aria-label="Email Raisa directly">
+              <i class="fa-regular fa-envelope"></i>
+            </a>
           </div>
-          <div>
-            <label for="p-availability">Preferred Times</label>
-            <input id="p-availability" name="availability" type="text" placeholder="e.g., Weeknights after 6pm" />
-          </div>
-        </div>
 
-        <div>
-          <label for="p-message">Additional Comments</label>
-          <textarea id="p-message" name="message"></textarea>
-        </div>
+          <div class="success">Thank you! I'll get back to you shortly!</div>
+          <div class="error">Hmm, something went wrong. Please try again or use the email button.</div>
+        </form>
+      </section>
+    </div>
+  </main>
 
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-        <input type="hidden" name="subject" value="Piano Lesson Inquiry" />
-        <input type="hidden" name="_next" value="studio.html#sent-lessons" />
-
-        <div class="actions">
-          <button class="btn" type="submit">Send</button>
-          <a class="email-btn" href="mailto:raisaihnat@gmail.com" aria-label="Email Raisa directly">
-            <i class="fa-regular fa-envelope"></i>
-          </a>
-        </div>
-
-        <div class="success">Thank you! I'll get back to you shortly.</div>
-        <div class="error">Hmm, something went wrong. Please try again or use the email button.</div>
-      </form>
-    </section>
-
-    <!-- FAQ & POLICIES -->
+  <!-- ============================================================
+       PIANO LESSONS — FAQ & STUDIO POLICIES
+       ============================================================ -->
+  <div class="lessons-info-wrap">
     <section class="lessons-info" aria-labelledby="lessons-info-title">
 
       <div class="lessons-info__intro">
+        <span class="lessons-info__eyebrow">Studio Information</span>
         <h2 id="lessons-info-title" class="lessons-info__title">
           Frequently Asked Questions &amp; Studio Policies
         </h2>
         <p class="lessons-info__lede">
           Everything prospective and current students should know about lessons,
-          scheduling, and studio expectations.
+          scheduling, and studio expectations. Please review before submitting an
+          inquiry.
         </p>
+        <div class="lessons-info__step">
+          <strong>Steinway &amp; Sons &middot; STEP Certified</strong>
+          Selected for the Steinway Teacher Education Program (April&nbsp;2026), an
+          invitational certification reflecting a sustained commitment to excellence
+          in piano pedagogy.
+        </div>
       </div>
 
       <!-- ============ FAQ ============ -->
@@ -490,8 +434,8 @@
         <summary>Who do you teach?</summary>
         <div>
           <p>
-            I welcome students of all ages and levels, from absolute beginners
-            through advanced and pre-college students, as well as adults
+            I welcome students of all ages and levels, from absolute
+            beginners through advanced and pre-college students, as well as adults
             returning to the instrument after a break. My studio is built around
             individualized instruction &mdash; lessons are tailored to each
             student's goals, learning style, and musical interests.
@@ -503,12 +447,11 @@
         <summary>What styles of music do you teach?</summary>
         <div>
           <p>
-            I specialize in classical and contemporary repertoire. Students
-            explore standard classical literature alongside film scores,
-            contemporary composers, popular music arrangements, and original
-            work as appropriate to their level. I do not teach jazz; students
-            with jazz interests are happily referred to colleagues who
-            specialize in the idiom.
+            I specialize in classical and contemporary repertoire.
+            Students explore standard classical literature alongside film scores,
+            contemporary composers, popular music arrangements, and original work as
+            appropriate to their level. I do not teach jazz; students with jazz
+            interests are happily referred to colleagues who specialize in the idiom.
           </p>
         </div>
       </details>
@@ -517,9 +460,8 @@
         <summary>Where do lessons take place?</summary>
         <div>
           <p>
-            Lessons are held at my home studio in downtown Princeton, NJ. I am
-            also open to holding lessons remotely for those who cannot commute
-            to the studio.
+            Lessons are held at my home studio in Princeton, NJ, Green Street Studio. I am also open to holding lessons remotely
+            for those who cannot commute to the studio.
           </p>
         </div>
       </details>
@@ -528,9 +470,9 @@
         <summary>How long are lessons, and how often do students meet?</summary>
         <div>
           <p>
-            I offer 45-minute and 60-minute private lessons. Most students meet
-            weekly; the appropriate length depends on age, level, and practice
-            capacity. We'll determine the right fit during our initial
+            I offer 45-minute and 60-minute private lessons. Most
+            students meet weekly; the appropriate length depends on age, level, and
+            practice capacity. We'll determine the right fit during our initial
             consultation.
           </p>
         </div>
@@ -540,17 +482,10 @@
         <summary>What does tuition cost, and how is billing handled?</summary>
         <div>
           <p>
-            Tuition is billed monthly. The 60-minute weekly lesson package is
-            $380 per month; the 45-minute weekly lesson package is $285 per
-            month. Tuition is structured around a 44-week studio year and
-            remains the same each month regardless of how many lessons fall
-            within that month.
+            Tuition is billed monthly. The 60-minute weekly lesson package is $380 per month; the 45-minute weekly lesson package is $285 per month. Tuition is structured around a 44-week studio year and remains the same each month regardless of how many lessons fall within that month.
           </p>
           <p>
-            Payment is due on the 1st of each month and may be made by Venmo,
-            Zelle, or check. A reminder is sent the week prior. Payments not
-            received by the 5th of the month are considered late, and lessons
-            may be paused until tuition is current.
+            Payment is due on the 1st of each month and may be made by Venmo, Zelle, or check. A reminder is sent the week prior. Payments not received by the 5th of the month are considered late, and lessons may be paused until tuition is current.
           </p>
         </div>
       </details>
@@ -559,12 +494,11 @@
         <summary>Do students need a piano at home?</summary>
         <div>
           <p>
-            Yes. Consistent home practice is essential to progress, so all
-            students must have regular access to an instrument. An acoustic
-            piano is strongly preferred. A high-quality digital keyboard with 88
-            fully-weighted keys, a sustain pedal, and a stable stand is
-            acceptable, particularly for beginning students. I'm glad to advise
-            on instrument selection.
+            Yes. Consistent home practice is essential to progress, so all students
+            must have regular access to an instrument. An acoustic piano is strongly
+            preferred. A high-quality digital keyboard with 88 fully-weighted keys,
+            a sustain pedal, and a stable stand is acceptable, particularly for
+            beginning students. I'm glad to advise on instrument selection.
           </p>
         </div>
       </details>
@@ -590,11 +524,9 @@
         <summary>Are there performance opportunities?</summary>
         <div>
           <p>
-            Yes. I host two studio recitals per year &mdash; typically in the
-            fall and late spring &mdash; giving students of every level a
-            supportive setting in which to perform. Additional group classes
-            are scheduled throughout the teaching year and are open to whoever
-            wishes to participate.
+            Yes. I host two studio recitals per year &mdash; typically in the fall
+            and late spring &mdash; giving students of every level a supportive,
+            professional setting in which to perform. Additional group classes are scheduled throughout the teaching year and are open to whoever wishes to participate.
           </p>
         </div>
       </details>
@@ -603,10 +535,10 @@
         <summary>How do new students get started?</summary>
         <div>
           <p>
-            Submit the Piano Lessons Inquiry form above, and I'll respond within
-            a few business days to schedule a brief introductory conversation.
-            From there, we'll set up a first lesson and discuss goals,
-            scheduling, and any questions you have about the studio.
+            Submit the Piano Lessons Inquiry form above, and I'll respond within a
+            few business days to schedule a brief introductory conversation. From
+            there, we'll set up a first lesson and discuss goals, scheduling, and
+            any questions you have about the studio.
           </p>
         </div>
       </details>
@@ -619,9 +551,8 @@
         <div>
           <p>
             Lessons begin and end at the scheduled time. Students arriving late
-            will receive the remainder of their scheduled lesson; the full
-            lesson fee applies. Please arrive a few minutes early to settle in
-            and warm up.
+            will receive the remainder of their scheduled lesson; the full lesson
+            fee applies. Please arrive a few minutes early to settle in and warm up.
           </p>
         </div>
       </details>
@@ -636,8 +567,8 @@
             original date.
           </p>
           <p>
-            Lessons cancelled with less than 48 hours' notice, no-shows, and
-            missed make-up lessons are charged in full and are not eligible for
+            Lessons cancelled with less than 48 hours' notice, no-shows, and missed
+            make-up lessons are charged in full and are not eligible for
             rescheduling. Exceptions may be made at my discretion in cases of
             sudden illness or family emergency.
           </p>
@@ -648,9 +579,9 @@
         <summary>Teacher cancellations</summary>
         <div>
           <p>
-            In the rare event that I must cancel a lesson, students will be
-            offered a make-up lesson at mutual convenience or a full credit
-            toward the next scheduled lesson.
+            In the rare event that I must cancel a lesson, students will be offered
+            a make-up lesson at mutual convenience or a full credit toward the next
+            scheduled lesson.
           </p>
         </div>
       </details>
@@ -660,8 +591,8 @@
         <div>
           <p>
             The studio observes major federal holidays and a brief winter and
-            summer break. A schedule of closures is published on the studio
-            calendar. No lesson fees are charged for studio-observed breaks.
+            summer break. A schedule of closures is shared at the start of each
+            teaching season. No lesson fees are charged for studio-observed breaks.
           </p>
         </div>
       </details>
@@ -671,14 +602,14 @@
         <div>
           <p>
             Consistent home practice is the foundation of meaningful progress.
-            Students &mdash; or, in the case of younger students, parents
-            &mdash; are expected to support a regular practice routine and to
-            come prepared to each lesson.
+            Students &mdash; or, in the case of younger students, parents &mdash;
+            are expected to support a regular practice routine and to come prepared
+            to each lesson.
           </p>
           <p>
             Progress is reviewed openly throughout the year. If a student is
-            consistently unprepared, we'll discuss adjustments together to find
-            a sustainable path forward.
+            consistently unprepared, we'll discuss adjustments together to find a
+            sustainable path forward.
           </p>
         </div>
       </details>
@@ -687,9 +618,9 @@
         <summary>Materials &amp; instrument upkeep</summary>
         <div>
           <p>
-            Students are responsible for purchasing their own sheet music,
-            method books, and lesson supplies (notebook, pencil, metronome). I
-            provide recommendations and, where possible, sourcing assistance.
+            Students are responsible for purchasing their own sheet music, method
+            books, and lesson supplies (notebook, pencil, metronome). I provide
+            recommendations and, where possible, sourcing assistance.
           </p>
           <p>
             Acoustic pianos should be tuned at least once per year; I'm glad to
@@ -703,7 +634,7 @@
         <div>
           <p>
             Studio recitals are held twice per year. Participation is strongly
-            encouraged, but never required.
+            encouraged, but never required!
           </p>
         </div>
       </details>
@@ -713,9 +644,9 @@
         <div>
           <p>
             Email is the preferred channel for scheduling, billing, and
-            non-urgent questions, with a response time of one to two business
-            days. For same-day matters (e.g., a sudden cancellation), a brief
-            text message is appropriate.
+            non-urgent questions, with a response time of one to two business days.
+            For same-day matters (e.g., a sudden cancellation), a brief text
+            message is appropriate.
           </p>
         </div>
       </details>
@@ -725,10 +656,7 @@
         <div>
           <p>
             Either the family or the teacher may end the lesson relationship at
-            any time. Families wishing to discontinue lessons must provide
-            notice by the 15th of the current month. The final month of tuition
-            will conclude at the end of that month, and the lesson slot will be
-            released to other students.
+            any time. Families wishing to discontinue lessons must provide notice by the 15th of the current month. The final month of tuition will conclude at the end of that month, and the lesson slot will be released to other students.
           </p>
         </div>
       </details>
@@ -739,8 +667,8 @@
           <p>
             Student information is kept confidential and used only for
             instructional purposes. Parents and guardians of minor students are
-            welcome to observe lessons and are encouraged to remain on the
-            premises during instruction at the home studio.
+            welcome to observe lessons and are encouraged to remain on the premises
+            during instruction at the home studio.
           </p>
         </div>
       </details>
@@ -751,7 +679,7 @@
       </p>
 
     </section>
-  </main>
+  </div>
 
   <footer>
     &copy; <span id="year"></span> Raisa Ihnat. All Rights Reserved.
@@ -760,6 +688,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Enhance form with fetch + inline success/error.
     const forms = document.querySelectorAll('.contact-form');
     forms.forEach(form => {
       form.addEventListener('submit', async (e) => {
